@@ -9,3 +9,6 @@ export interface InputFieldProps extends React.InputHTMLAttributes<HTMLInputElem
     inputProps?: object; 
     value? : string;
 }
+export interface ErrorObject{
+    error : Error   
+}
