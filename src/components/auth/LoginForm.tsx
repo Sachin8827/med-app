@@ -1,22 +1,31 @@
 import { Visibility, VisibilityOff } from "@mui/icons-material"
-import { IconButton, InputAdornment } from "@mui/material"
-import { Box, Container } from "@mui/material"
+import { IconButton, InputAdornment, Typography } from "@mui/material"
+import { Box, } from "@mui/material"
 import { Formik, Form } from "formik"
 import { useState } from "react"
 import { Link } from "react-router-dom"
-import { ForgotPassword, Label, LoginFormSection, MyformControl, SubmitButton } from "../../assets/styles/styled"
+import { Flex, ForgotPassword, Label, LoginFormSection, MyAlert, MyformControl } from "../../assets/styles/styled"
 import { LoginType } from "../../Types/Types"
 import { validationSchema } from "../../Validations/SchemaValidations"
-import { EmailFormInputField, PasswordFormInputField } from "./FomInputField"
+import FormInputButton from "../common/Button"
+import { InputField, PasswordFormInputField } from "../common/FomInputField"
 
 const LoginForm: React.FC = () => {
     const [showPassword, setShowPassword] = useState(true);
+    const [isLoading, setLoading] = useState(false);
     const currentValidationStep = validationSchema[0];
+    const [foundStatus, setFoundStatus] = useState(false)
     const initialValues = {
         email: '',
         password: ''
     }
     const handleSubmit = (values: LoginType) => {
+        setLoading(true);
+        setTimeout(() => {
+            setLoading(false);
+        }, 2000);
+        (values.email != 'sachin@gmail.com') ? setFoundStatus(true) : setFoundStatus(false)
+        console.log(foundStatus)
         console.log(values)
     }
     const handleClickShowPassword = () => setShowPassword((show: Boolean) => !show);
@@ -28,14 +37,14 @@ const LoginForm: React.FC = () => {
 
         <LoginFormSection className='customBox' >
 
-            <Box sx={{ mt: 3 }}>
+            <Box sx={{ mt: 1 }}>
                 <Formik initialValues={initialValues} validationSchema={currentValidationStep} validateOnChange={true} onSubmit={handleSubmit}>
                     {({ }) => (
 
                         < Form >
                             <MyformControl >
                                 <Label shrink className='labelDesign' >Email</Label>
-                                <EmailFormInputField name='email' className='email' label='' id='email' />
+                                <InputField name='email' className='email' label='' id='email' />
                             </MyformControl>
 
                             <MyformControl style={{ marginTop: '2rem' }}>
@@ -62,14 +71,20 @@ const LoginForm: React.FC = () => {
                                 />
                             </MyformControl>
 
-                            <SubmitButton fullWidth variant='contained' type="submit" >Login</SubmitButton>
+                            <FormInputButton isLoading={isLoading} text='Log in' />
+
                         </Form>
 
                     )}
                 </Formik>
             </Box>
 
-            <ForgotPassword variant='h6' component={'h6'} ><Link className='forgot' to={'/forgot'} >Forgot your password?</Link></ForgotPassword>
+            <ForgotPassword variant='h6'  ><Link className='forgot' to={'/forgot'} ><Typography variant="body2" color={'primary'}>Forgot your password?</Typography></Link></ForgotPassword>
+            {foundStatus ? <Flex>
+                <MyAlert severity="info" onClose={() => { setFoundStatus(false) }}>
+                    User not found
+                </MyAlert>
+            </Flex> : ""}
         </LoginFormSection>
 
 

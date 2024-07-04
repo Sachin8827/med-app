@@ -1,17 +1,14 @@
 import { Button, Typography } from "@mui/material";
 import { InputLabel, OutlinedInput, TextField } from "@mui/material";
 import { Box } from "@mui/system";
-import { ErrorObject } from "../../Types/Types";
+import { ErrorObject } from "./Types/Types";
 import styled from "styled-components";
 
 
 export const LoginSection = styled(Box)({
 
   '.MuiTypography-root': {
-    marginTop: "24px",
-    fontSize: "24px",
-    fontWeight: 600,
-    lineHeight: "32px",
+    marginTop: '13px',
     textAlign: "left",
     color: '#2F2F32',
   },
@@ -28,18 +25,18 @@ export const Label = styled(InputLabel)({
 
 export const EmailField = styled(OutlinedInput)<ErrorObject>(({ error }) => ({
   '&  .MuiOutlinedInput-root': {
-    borderRadius: '12px'
+    borderRadius: '12px',
   },
 
   '& .MuiInputBase-input': {
-    backgroundColor: error ? '#C5141414' : '#F0F1F4',
-    border: error ? '1px solid red' : 'none',
+    // backgroundColor: error ? '#C5141414' : '#F0F1F4',
+
     fontWeight: 400,
     height: '10px',
     borderRadius: '12px',
   },
   '& .MuiOutlinedInput-notchedOutline': {
-    border: 'none',
+    // border: 'none',
   },
   '& .MuiButtonBase-root': {
     backgroundColor: '#F0F1F4',
