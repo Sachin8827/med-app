@@ -9,6 +9,8 @@ import ResetPassword from './Pages/ResetPassword'
 import InvalidLink from './Pages/InvalidLink'
 import ErrorComponent from './Pages/ErrorMsg'
 import SignUp from './Pages/SignUp'
+import HomePage from './Pages/HomePage'
+
 
 
 
@@ -25,7 +27,8 @@ function App() {
         main: '#C51414',
       },
       primary: {
-        main: '#076EB0'
+        main: '#076EB0',
+        light: '#E6F4F9'
       }
 
     },
@@ -34,8 +37,8 @@ function App() {
         styleOverrides: {
           root: {
             [`@media (min-width:600px)`]: {
-              paddingLeft: 0,
-              paddingRight: 0,
+              // paddingLeft: 0,
+              // paddingRight: 0,
             },
           }
         }
@@ -48,11 +51,17 @@ function App() {
         fontWeight: 600,
         color: '#2F2F32',
       },
+
       body2: {
         fontSize: '16px',
         fontWeight: 400,
         lineHieght: "24px",
         color: '#707070'
+      },
+      subtitle2: {
+        fontWeight: 600,
+        lineHeight: '26px',
+        fontSize: '18px'
       }
 
     },
@@ -63,7 +72,8 @@ function App() {
       <CssBaseline />
 
       <Routes>
-        <Route path='/' Component={Login} />
+        <Route path='/' Component={HomePage} />
+        <Route path='/login' Component={Login} />
         <Route path='/forgot' Component={ForgotPassword} />
         <Route path='/checkemail/:email' Component={CheckEmail} />
         <Route path='/reset' Component={ResetPassword} />

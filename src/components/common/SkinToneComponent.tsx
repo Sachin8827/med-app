@@ -2,12 +2,12 @@ import { SkinToneBox, SkinToneButton, SkinToneHeading } from "../../assets/style
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import { ImageList, Typography } from "@mui/material";
 import { SkinToneProps } from "../../Types/Types";
-const SkinToneComponent: React.FC<SkinToneProps> = ({ heading, firstImage, secondImage, thirdImage, isSelected, handleSkinTone }) => {
+const SkinToneComponent: React.FC<SkinToneProps> = ({ isError, name, heading, firstImage, secondImage, thirdImage, isSelected, handleSkinTone }) => {
     return <>
-        <SkinToneBox onClick={() => handleSkinTone(heading)} sx={{ backgroundColor: isSelected ? '#c5e1a5' : "#F0F1F4" }}>
-            <SkinToneHeading>
+        <SkinToneBox name={name} onClick={() => handleSkinTone(heading)} sx={{ boxSizing: 'border-box', backgroundColor: isError ? '#C5141414' : isSelected ? '#E2F2C8' : "#F0F1F4", border: isError ? '1px solid red' : isSelected ? "1px solid #87C81A" : '1px solid #F0F1F4' }}>
+            <SkinToneHeading >
                 <Typography>{heading}</Typography>
-                {isSelected && <CheckCircleIcon color="success" />}
+                {isSelected && <CheckCircleIcon sx={{ color: '#87C81A' }} />}
 
             </SkinToneHeading>
             <SkinToneButton >

@@ -1,6 +1,7 @@
 import { Visibility, VisibilityOff } from "@mui/icons-material"
-import { IconButton, InputAdornment, Typography } from "@mui/material"
+import { Box, IconButton, InputAdornment, Typography } from "@mui/material"
 import { useState } from "react"
+import { Link } from "react-router-dom"
 import { Label, MyformControl } from "../../assets/styles/styled"
 import { EmailFormProps } from "../../Types/Types"
 import { InputField, PasswordFormInputField } from "../common/FomInputField"
@@ -45,6 +46,7 @@ const EmailForm: React.FC<EmailFormProps> = ({ email, password }) => {
 
             />
         </MyformControl>
+
     </>
 }
 export default EmailForm    
