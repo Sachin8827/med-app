@@ -13,7 +13,7 @@ const InvalidLink = () => {
                 sm: '402px',
                 lg: "508px"
 
-            }
+            }, mt: 3
         }}>
             <ImageHeading heading="" />
             <CloseCircleIcon />

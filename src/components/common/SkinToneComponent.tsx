@@ -12,13 +12,13 @@ const SkinToneComponent: React.FC<SkinToneProps> = ({ isError, name, heading, fi
             </SkinToneHeading>
             <SkinToneButton >
                 <ImageList sx={{ width: 'auto' }} >
-                    <img src={firstImage} alt="Logo" style={{ borderRadius: '12px' }} />
+                    <img src={firstImage} width='100%' alt="Logo" style={{ borderRadius: '12px' }} />
                 </ImageList>
                 <ImageList >
-                    <img src={secondImage} alt="Logo" style={{ borderRadius: '12px' }} />
+                    <img src={secondImage} width='100%' alt="Logo" style={{ borderRadius: '12px' }} />
                 </ImageList>
                 <ImageList >
-                    <img src={thirdImage} alt="Logo" style={{ borderRadius: '12px' }} />
+                    <img src={thirdImage} width='100%' alt="Logo" style={{ borderRadius: '12px' }} />
                 </ImageList>
 
             </SkinToneButton>

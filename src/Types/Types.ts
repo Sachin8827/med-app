@@ -32,14 +32,16 @@ export  interface User {
 export  interface EmailFormProps {
     email: string;
     password: string;
+    handleNext : (values: any, {}:any) => void
 }
 
 export  interface PersonalInfoProps {
     firstName: string;
     lastName: string;
     dateOfBirth: string ; // Consider using a Date type if you're handling dates
-    setFieldValue : (name : string, value:string) =>void
-    gender :string
+    handlePrevious : () =>void
+    gender :string;
+    handleNext : (values: any, {}:any) => void
 }
 export interface DateProp {
     label: string;
@@ -62,4 +64,15 @@ export interface CustomRadioButtonProps extends FormControlLabelProps {
 }
 export  interface SkinToneBoxProps extends BoxProps {
     name?: string;
+}
+export interface GenderProps {
+    isSelected: boolean,
+    // onClick: (value: string, setFieldvalue: (key: string, value: string) => void) => void,
+    onClick: any
+    name: string,
+    value: string,
+    label: string
+}
+export  interface InfectionIntensity extends BoxProps {
+    name: string;
 }

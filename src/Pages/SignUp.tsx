@@ -8,9 +8,9 @@ const SignUp: React.FC = () => {
             maxWidth: {
                 xs: "100%",
                 sm: '402px',
-                lg: "508px"
+                lg: "616px"
 
-            }
+            }, mt: 3
         }}>
 
             <SignUpForm />

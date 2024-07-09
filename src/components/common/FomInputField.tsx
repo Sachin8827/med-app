@@ -1,6 +1,8 @@
-import { DateProp, InputFieldProps } from '../../Types/Types';
+import { DateProp, GenderProps, InputFieldProps } from '../../Types/Types';
 import { useField } from 'formik';
-import { Input, ErrorMsg, } from '../../assets/styles/styled';
+import { Input, ErrorMsg, CustomRadioButton, } from '../../assets/styles/styled';
+import { Radio } from '@mui/material';
+import SkinToneComponent from './SkinToneComponent';
 
 export const InputField: React.FC<InputFieldProps> = ({ emailfound, label, ...props }) => {
     const [field, meta, helpers] = useField(props)
@@ -26,4 +28,15 @@ export const DateInputField: React.FC<DateProp> = ({ label, ...props }) => {
         {meta.error && meta.touched ? <ErrorMsg variant='body2' color='error'>{meta.error}</ErrorMsg> : ""}
     </>
 }
+
+export const GenderInputField: React.FC<GenderProps> = ({ label, ...props }) => {
+    const [field, meta, helper] = useField('gender');
+    const isError = meta.error && meta.touched;
+    return <>
+        <CustomRadioButton label={label} {...field} {...props} isError={isError} control={<Radio />} />
+    </>
+}
+
+
+
 

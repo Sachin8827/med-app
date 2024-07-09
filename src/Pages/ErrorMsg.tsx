@@ -10,7 +10,8 @@ const ErrorComponent = () => {
                 sm: '402px',
                 lg: "508px"
 
-            }
+            },
+            mt: 3
         }}>
             <Typography variant="h1" component="h2" gutterBottom>
                 404

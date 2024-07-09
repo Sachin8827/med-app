@@ -1,8 +1,8 @@
-import { Box, ImageList, Radio, RadioGroup, Typography } from "@mui/material"
+import { RadioGroup, } from "@mui/material"
 import { useState } from "react"
 
 import SkinToneComponent from "../common/SkinToneComponent";
-import { ErrorMsg, MyformControl } from "../../assets/styles/styled";
+import { ErrorMsg, MyformControl, SignpuFlexBox, SkintoneGroup, SubmitButton } from "../../assets/styles/styled";
 import ImageHeading from "../common/ImageHeading"
 import imageFirst from '../../../public/images/SkinToneAFirst.svg'
 import secondImage from '../../../public/images/SkintoneSecond.svg'
@@ -13,28 +13,45 @@ import sixthImage from '../../../public/images/SkinToneSixth.svg'
 import seventhImage from '../../../public/images/SkinToneSeventh.svg'
 import eighthImage from '../../../public/images/SkinToneEighth.svg'
 import ninthImage from '../../../public/images/SkinToneNinth.svg'
-import { useField } from "formik";
-const SkinTone: React.FC<{ skinTone: string, setFieldValue: any }> = ({ skinTone, setFieldValue }) => {
+import { Form, Formik } from "formik";
+import { validationSchema } from "../../Validations/SchemaValidations";
+const SkinTone: React.FC<{ skinTone: string, handleNext: any, handlePrevious: any }> = ({ skinTone, handleNext, handlePrevious }) => {
     const [skinToneInput, setSkinTone] = useState(skinTone);
-    const a = '#87C81A'
-    const handleSkinTone = (tone: string) => {
+    const currentValidationStep = validationSchema[2]
+    const handleSkinTone = (tone: string, setFieldValue: any) => {
         setSkinTone(tone);
         setFieldValue('skinTone', tone);
     }
-    const [field, meta, helper] = useField('skinTone');
     return <>
         <ImageHeading heading="Select the option that matches your skin tone best" />
-        <MyformControl sx={{ mt: '1.5rem' }}>
-            <RadioGroup
-                sx={{ display: 'flex', flexDirection: 'column', rowGap: 2 }}
-            >
-                <SkinToneComponent isError={!!meta.error && meta.touched} name='skinTone' heading='Tone A' firstImage={imageFirst} secondImage={secondImage} thirdImage={thirdImage} isSelected={skinToneInput == "Tone A"} handleSkinTone={handleSkinTone} />
-                <SkinToneComponent isError={!!meta.error && meta.touched} name='skinTone' heading='Tone B' firstImage={fourthImage} secondImage={fifthImage} thirdImage={sixthImage} isSelected={skinToneInput == "Tone B"} handleSkinTone={handleSkinTone} />
-                <SkinToneComponent isError={!!meta.error && meta.touched} name='skinTone' heading='Tone C' firstImage={seventhImage} secondImage={eighthImage} thirdImage={ninthImage} isSelected={skinToneInput == "Tone C"} handleSkinTone={handleSkinTone} />
-            </RadioGroup>
-            {meta.error && meta.touched ? <ErrorMsg variant='body2' color='error'>{meta.error}</ErrorMsg> : ""}
-        </MyformControl>
+        <Formik
+            initialValues={{ skinTone }}
+            validationSchema={currentValidationStep}
+            onSubmit={handleNext}
+        >
+            {({ values, setFieldValue, errors, touched }) => (
+                <Form>
 
+                    <MyformControl sx={{ mt: '1.5rem' }}>
+                        <SkintoneGroup
+                        >
+                            <SkinToneComponent isError={!!errors.skinTone && !!touched.skinTone} name='skinTone' heading='Tone A' firstImage={imageFirst} secondImage={secondImage} thirdImage={thirdImage} isSelected={skinToneInput == "Tone A"} handleSkinTone={() => handleSkinTone("Tone A", setFieldValue)} />
+                            <SkinToneComponent isError={!!errors.skinTone && !!touched.skinTone} name='skinTone' heading='Tone B' firstImage={fourthImage} secondImage={fifthImage} thirdImage={sixthImage} isSelected={skinToneInput == "Tone B"} handleSkinTone={() => handleSkinTone("Tone B", setFieldValue)} />
+                            <SkinToneComponent isError={!!errors.skinTone && !!touched.skinTone} name='skinTone' heading='Tone C' firstImage={seventhImage} secondImage={eighthImage} thirdImage={ninthImage} isSelected={skinToneInput == "Tone C"} handleSkinTone={() => handleSkinTone("Tone C", setFieldValue)} />
+                        </SkintoneGroup>
+                        {errors.skinTone && touched.skinTone ? <ErrorMsg variant='body2' color='error'>{errors.skinTone}</ErrorMsg> : ""}
+                    </MyformControl>
+                    <SignpuFlexBox sx={{ justifyContent: 'space-between' }}>
+                        <SubmitButton type='submit' variant="contained">
+                            Continue
+                        </SubmitButton>
+                        <SubmitButton variant="outlined" onClick={handlePrevious}>
+                            Previous
+                        </SubmitButton>
+                    </SignpuFlexBox>
+                </Form>
+            )}
+        </Formik>
     </>
 }
 export default SkinTone 

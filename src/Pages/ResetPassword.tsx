@@ -21,7 +21,8 @@ const ResetPassword = () => {
                 sm: '402px',
                 lg: "508px"
 
-            }
+            },
+
         }}>
 
             <FlexBox sx={{ position: 'relative' }}>

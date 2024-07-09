@@ -1,24 +1,19 @@
-
-import { AppBar, Box, IconButton, Toolbar, Typography, useMediaQuery, useTheme } from "@mui/material";
-import userIcon from '../../../public/images/user.svg'
-import { useState } from "react";
 import MenuIcon from '@mui/icons-material/Menu';
+import { AppBar, Box, IconButton, Typography, useMediaQuery, useTheme } from '@mui/material';
 import { CustomDrawer, CustomToolBar } from "../../assets/styles/styled";
-import { List } from "./List";
-
-
-const Navbar: React.FC = () => {
+import { List } from "../common/List";
+import ArrowBackIosNewRoundedIcon from '@mui/icons-material/ArrowBackIosNewRounded';
+import { useState } from 'react';
+const FormNavBar: React.FC<{ text: string }> = ({ text }) => {
     const [auth, setAuth] = useState(true);
-    const theme = useTheme();
+    const theme = useTheme()
     const isLargeScreen = useMediaQuery(theme.breakpoints.up('lg'));
     const [isDrawerOpen, setDrawer] = useState(false);
-
     const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
         setDrawer(true)
     };
-
     return <>
-        <Box sx={{ flexGrow: 1, display: isLargeScreen ? 'none' : 'block' }} >
+        <Box sx={{ flexGrow: 1, display: isLargeScreen ? 'none' : 'block', height: '64px' }} >
 
             <AppBar position="static" sx={{ backgroundColor: "white", boxShadow: 'none' }}>
                 <CustomToolBar>
@@ -30,10 +25,10 @@ const Navbar: React.FC = () => {
                         aria-haspopup="true"
                         color="inherit"
                     >
-                        <img src={userIcon} />
+                        <ArrowBackIosNewRoundedIcon sx={{ color: '#A3A3A3', width: '16px' }} />
                     </IconButton>
-                    <Typography variant="subtitle1" color={'black'} component="div" sx={{ flexGrow: 1 }}>
-                        John Doe
+                    <Typography variant="subtitle1" color={'primary.main'} component="div" sx={{ flexGrow: 1 }}>
+                        {text}
                     </Typography>
                     {auth && (
                         <div>
@@ -60,4 +55,4 @@ const Navbar: React.FC = () => {
         </Box>
     </>
 }
-export default Navbar;
+export default FormNavBar;

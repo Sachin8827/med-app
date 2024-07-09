@@ -13,7 +13,8 @@ const CheckEmail: React.FC = () => {
                 sm: '402px',
                 lg: "508px"
 
-            }
+            },
+            mt: 3
         }}>
             <FlexBox>
                 <ImageHeading heading="Check your email" />
