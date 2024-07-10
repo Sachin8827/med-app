@@ -8,7 +8,7 @@ import { SubmitButton } from "../../styled"
 import { useState } from "react"
 import { BodySection, BodySectionForm, NextButtonDiv, SvgBox } from "../../assets/styles/styled"
 
-const ZoneSelectionForm = () => {
+const ZoneSelectionForm:React.FC<{handleNext : (values:any) =>void}> = ({handleNext}) => {
     const currentValidationStep = ValdationHealth[0];
     const [isFront, setFront] = useState(true);
     const theme = useTheme();
@@ -17,9 +17,6 @@ const ZoneSelectionForm = () => {
 
     const handleClick = () => {
         setFront(!isFront)
-    }
-    const handleSubmit = () => {
-        console.log('clicked')
     }
     return <>
         <FormNavBar text='Home' />
@@ -30,9 +27,9 @@ const ZoneSelectionForm = () => {
                 <Typography variant="body2" mt={1} mb={1}>Press the zones that are affected by eczema</Typography>
             </Box>
             <Formik
-                initialValues={[]}
+                initialValues={['chest']}
                 validationSchema={currentValidationStep}
-                onSubmit={handleSubmit}
+                onSubmit={handleNext}
             >
                 {({ }) => (
                     <Form>
@@ -92,7 +89,7 @@ const ZoneSelectionForm = () => {
                                 </svg>
                             </SvgBox>
                             <NextButtonDiv>
-                                <SubmitButton variant='contained'>Next</SubmitButton>
+                                <SubmitButton variant='contained' type='submit'>Next</SubmitButton>
                             </NextButtonDiv>
                         </BodySectionForm>
                     </Form>

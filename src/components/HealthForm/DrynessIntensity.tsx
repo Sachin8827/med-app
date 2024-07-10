@@ -6,15 +6,9 @@ import firstImage from '../../../public/images/image.jpg'
 import secondImage from '../../../public/images/image (1).jpg'
 import thirdImage from '../../../public/images/image (2).jpg'
 import fourthImage from '../../../public/images/image (3).jpg'
-const DrynessIntensity: React.FC = () => {
+const DrynessIntensity: React.FC<{handleNext : (values:any) =>void, handlePrevious : ()=>void}> = ({handleNext, handlePrevious}) => {
     const theme = useTheme();
     const isLargeScreen = useMediaQuery(theme.breakpoints.up('lg'));
-    const handleSubmit = () => {
-        console.log('clicked')
-    }
-    const handlePrevious = () => {
-        console.log('clicked')
-    }
     return <>
         <FormNavBar text='Affected area' />
         <IntensitySection>
@@ -35,7 +29,7 @@ const DrynessIntensity: React.FC = () => {
                 <Typography mt={1} variant="body2">Evaluate the symptom's intensity on the zone you selected, without regard to the location of the displayed image.</Typography>
                 <Formik
                     initialValues={{ drynessIntensity: -1, }}
-                    onSubmit={handleSubmit}
+                    onSubmit={handleNext}
                 >
                     {() => (
                         <Form>
@@ -44,6 +38,7 @@ const DrynessIntensity: React.FC = () => {
 
                                     <ImageDiv>
                                         <img src={firstImage} />
+                                        
                                     </ImageDiv>
                                     <ImageDiv>
                                         <img src={secondImage} />

@@ -8,7 +8,7 @@ import ArrowBackIosNewRoundedIcon from '@mui/icons-material/ArrowBackIosNewRound
 import DrynessIntensity from "./DrynessIntensity";
 const HealthCondtionForm: React.FC = () => {
 
-    const [currentStep, setCurrentSte] = useState(0);
+    const [currentStep, setCurrentStep] = useState(0);
 
 
     let [formState, setFormState] = useState({
@@ -31,9 +31,21 @@ const HealthCondtionForm: React.FC = () => {
 
     const RenderPage = () => {
         switch (currentStep) {
-            case 0: return <ZoneSelectionForm />
-            case 1: return <DrynessIntensity />
+            case 0: return <ZoneSelectionForm handleNext={handleNext} />
+            case 1: return <DrynessIntensity handleNext={handleNext} handlePrevious={handlePrevious}/>
         }
+    }
+    const handlePrevious = () =>{
+        console.log('Called')
+        setCurrentStep(currentStep => currentStep - 1)
+    }
+    const handleNext = (values: any) =>{
+        console.log("called")
+        setFormState(prevFormData => ({
+            ...prevFormData,
+            ...values
+        }));
+        setCurrentStep(currentStep => currentStep + 1)
     }
     const renderHeading = () => {
         switch (currentStep) {
