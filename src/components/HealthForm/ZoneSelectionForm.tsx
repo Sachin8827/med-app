@@ -8,7 +8,7 @@ import { SubmitButton } from "../../styled"
 import { useState } from "react"
 import { BodySection, BodySectionForm, NextButtonDiv, SvgBox } from "../../assets/styles/styled"
 
-const ZoneSelectionForm:React.FC<{handleNext : (values:any) =>void}> = ({handleNext}) => {
+const ZoneSelectionForm: React.FC<{ handleNext: (values: any) => void }> = ({ handleNext }) => {
     const currentValidationStep = ValdationHealth[0];
     const [isFront, setFront] = useState(true);
     const theme = useTheme();
