@@ -1,19 +1,20 @@
-import FormNavBar from "./FormNavBar"
+import { useState } from "react"
 import { ErrorMsg, InfectedAreaSection, IntensitySection, MyformControl, SignpuFlexBox, SubmitButton } from "../../assets/styles/styled"
-import { Box } from "@mui/material"
 import { Formik, Form } from "formik"
+import { Box } from "@mui/material"
+import { ValdationHealth } from '../../Validations/ValidationHealth'
+import InputField from "./common-components/InputField"
+import FormNavBar from "./FormNavBar"
+import AffectedAreas from "./common-components/AffectedAreasContent"
 import firstImage from '../../../public/images/image (16).jpg'
 import secondImage from '../../../public/images/image (17).jpg'
 import thirdImage from '../../../public/images/image (18).jpg'
 import fourthImage from '../../../public/images/image (19).jpg'
-import { useState } from "react"
-import AffectedAreas from "./common-components/AffectedAreasContent"
-import InputField from "./common-components/InputField"
-import { ValdationHealth } from '../../Validations/ValidationHealth'
 const ScratchMarks: React.FC<{ handleNext: (values: any) => void, handlePrevious: () => void, scratchMarksIntensity: number }> = ({ handleNext, handlePrevious, scratchMarksIntensity }) => {
 
     const [selectedIntensity, setSelected] = useState(scratchMarksIntensity);
     const currentValidationStep = ValdationHealth[5];
+
     const handleClick = (name: string, value: number, setFieldValue: (name: string, value: number) => void) => {
         setFieldValue(name, value);
         setSelected(value);
@@ -28,7 +29,7 @@ const ScratchMarks: React.FC<{ handleNext: (values: any) => void, handlePrevious
                     onSubmit={handleNext}
                     validationSchema={currentValidationStep}
                 >
-                    {({ errors, touched, setFieldValue }) => (
+                    {({ errors, touched, setFieldValue, values }) => (
                         <Form>
                             <MyformControl sx={{ marginTop: '15px' }}>
                                 <InfectedAreaSection >
@@ -38,9 +39,8 @@ const ScratchMarks: React.FC<{ handleNext: (values: any) => void, handlePrevious
                                     <InputField onClick={() => handleClick("scratchMarksIntensity", 3, setFieldValue)} image={fourthImage} name='scratchMarksIntensity' isSelected={selectedIntensity == 3} num={3} />
                                 </InfectedAreaSection>
                                 {errors.scratchMarksIntensity && touched.scratchMarksIntensity ? <ErrorMsg variant='body2' color='error'>{errors.scratchMarksIntensity}</ErrorMsg> : ""}
-
                             </MyformControl >
-                            <SignpuFlexBox sx={{ justifyContent: 'space-between' }}>
+                            <SignpuFlexBox disabled={values.scratchMarksIntensity < 0} sx={{ justifyContent: 'space-between' }}>
                                 <SubmitButton type='submit' variant="contained">
                                     Next
                                 </SubmitButton>

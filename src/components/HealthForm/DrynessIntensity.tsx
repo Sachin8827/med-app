@@ -1,16 +1,12 @@
+import { useState } from "react"
 import FormNavBar from "./FormNavBar"
 import { ErrorMsg, InfectedAreaSection, IntensitySection, MyformControl, SignpuFlexBox, SubmitButton } from "../../assets/styles/styled"
 import { Box } from "@mui/material"
 import { Formik, Form } from "formik"
-// import firstImage from '../../../public/images/image.jpg'
-// import secondImage from '../../../public/images/image (1).jpg'
-// import thirdImage from '../../../public/images/image (2).jpg'
-// import fourthImage from '../../../public/images/image (3).jpg'
 import firstImage from '../../../public/images/image (4).jpg'
 import secondImage from '../../../public/images/image (5).jpg'
 import thirdImage from '../../../public/images/image (6).jpg'
 import fourthImage from '../../../public/images/image (7).jpg'
-import { useState } from "react"
 import AffectedAreas from "./common-components/AffectedAreasContent"
 import InputField from "./common-components/InputField"
 import { ValdationHealth } from '../../Validations/ValidationHealth'
@@ -18,8 +14,8 @@ const DrynessIntensity: React.FC<{ handleNext: (values: any) => void, handlePrev
 
     const [selectedIntensity, setSelected] = useState(drynessIntensity);
     const currentValidationStep = ValdationHealth[1];
+
     const handleClick = (name: string, value: number, setFieldValue: (name: string, value: number) => void) => {
-        console.log('execited')
         setFieldValue(name, value);
         setSelected(value);
     }
@@ -33,7 +29,7 @@ const DrynessIntensity: React.FC<{ handleNext: (values: any) => void, handlePrev
                     onSubmit={handleNext}
                     validationSchema={currentValidationStep}
                 >
-                    {({ errors, touched, setFieldValue }) => (
+                    {({ errors, touched, setFieldValue, values }) => (
                         <Form>
                             <MyformControl sx={{ marginTop: '15px' }}>
                                 <InfectedAreaSection >
@@ -43,10 +39,9 @@ const DrynessIntensity: React.FC<{ handleNext: (values: any) => void, handlePrev
                                     <InputField onClick={() => handleClick("drynessIntensity", 3, setFieldValue)} image={fourthImage} name='drynessIntensity' isSelected={selectedIntensity == 3} num={3} />
                                 </InfectedAreaSection>
                                 {errors.drynessIntensity && touched.drynessIntensity ? <ErrorMsg variant='body2' color='error'>{errors.drynessIntensity}</ErrorMsg> : ""}
-
                             </MyformControl >
                             <SignpuFlexBox sx={{ justifyContent: 'space-between' }}>
-                                <SubmitButton type='submit' variant="contained">
+                                <SubmitButton disabled={values.drynessIntensity < 0} type='submit' variant="contained">
                                     Next
                                 </SubmitButton>
                                 <SubmitButton variant="outlined" onClick={handlePrevious}>

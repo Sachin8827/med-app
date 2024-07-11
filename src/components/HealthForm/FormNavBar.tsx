@@ -1,7 +1,7 @@
 import MenuIcon from '@mui/icons-material/Menu';
 import { AppBar, Box, IconButton, Typography, useMediaQuery, useTheme } from '@mui/material';
 import { CustomDrawer, CustomToolBar } from "../../assets/styles/styled";
-import { List } from "../common/List";
+import { NavList } from "../common/NavList";
 import ArrowBackIosNewRoundedIcon from '@mui/icons-material/ArrowBackIosNewRounded';
 import { useState } from 'react';
 const FormNavBar: React.FC<{ text: string }> = ({ text }) => {
@@ -45,7 +45,7 @@ const FormNavBar: React.FC<{ text: string }> = ({ text }) => {
                                 anchor={isLargeScreen ? 'left' : 'top'}
                                 open={isLargeScreen ? false : isDrawerOpen}
                             >
-                                {<List setDrawer={setDrawer} />}
+                                {<NavList setDrawer={setDrawer} />}
                             </CustomDrawer>
 
                         </div>

@@ -1,19 +1,20 @@
-import FormNavBar from "./FormNavBar"
-import { ErrorMsg, InfectedAreaSection, IntensitySection, MyformControl, SignpuFlexBox, SubmitButton } from "../../assets/styles/styled"
-import { Box } from "@mui/material"
+import { useState } from "react"
 import { Formik, Form } from "formik"
+import { Box } from "@mui/material"
+import { ErrorMsg, InfectedAreaSection, IntensitySection, MyformControl, SignpuFlexBox, SubmitButton } from "../../assets/styles/styled"
+import { ValdationHealth } from '../../Validations/ValidationHealth'
+import FormNavBar from "./FormNavBar"
+import InputField from "./common-components/InputField"
 import firstImage from '../../../public/images/image.jpg'
 import secondImage from '../../../public/images/image (1).jpg'
 import thirdImage from '../../../public/images/image (2).jpg'
 import fourthImage from '../../../public/images/image (3).jpg'
-import { useState } from "react"
 import AffectedAreas from "./common-components/AffectedAreasContent"
-import InputField from "./common-components/InputField"
-import { ValdationHealth } from '../../Validations/ValidationHealth'
 const RednessIntensity: React.FC<{ handleNext: (values: any) => void, handlePrevious: () => void, rednessIntensity: number }> = ({ handleNext, handlePrevious, rednessIntensity }) => {
 
     const [selectedIntensity, setSelected] = useState(rednessIntensity);
     const currentValidationStep = ValdationHealth[2];
+
     const handleClick = (name: string, value: number, setFieldValue: (name: string, value: number) => void) => {
         setFieldValue(name, value);
         setSelected(value);
@@ -28,7 +29,7 @@ const RednessIntensity: React.FC<{ handleNext: (values: any) => void, handlePrev
                     onSubmit={handleNext}
                     validationSchema={currentValidationStep}
                 >
-                    {({ errors, touched, setFieldValue }) => (
+                    {({ errors, touched, setFieldValue, values }) => (
                         <Form>
                             <MyformControl sx={{ marginTop: '15px' }}>
                                 <InfectedAreaSection >
@@ -38,10 +39,9 @@ const RednessIntensity: React.FC<{ handleNext: (values: any) => void, handlePrev
                                     <InputField onClick={() => handleClick("rednessIntensity", 3, setFieldValue)} image={fourthImage} name='rednessIntensity' isSelected={selectedIntensity == 3} num={3} />
                                 </InfectedAreaSection>
                                 {errors.rednessIntensity && touched.rednessIntensity ? <ErrorMsg variant='body2' color='error'>{errors.rednessIntensity}</ErrorMsg> : ""}
-
                             </MyformControl >
                             <SignpuFlexBox sx={{ justifyContent: 'space-between' }}>
-                                <SubmitButton type='submit' variant="contained">
+                                <SubmitButton disabled={values.rednessIntensity < 0} type='submit' variant="contained">
                                     Next
                                 </SubmitButton>
                                 <SubmitButton variant="outlined" onClick={handlePrevious}>
