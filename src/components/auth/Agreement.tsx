@@ -1,7 +1,6 @@
-
+import { useState } from "react";
 import { Checkbox, FormControlLabel, FormGroup, Typography } from "@mui/material"
 import { Field, Form, Formik } from "formik"
-import { useState } from "react";
 import { SignpuFlexBox, SubmitButton } from "../../assets/styles/styled";
 import { validationSchema } from "../../Validations/SchemaValidations";
 import ImageHeading from "../common/ImageHeading"
@@ -9,10 +8,12 @@ import ImageHeading from "../common/ImageHeading"
 const Agreement: React.FC<{ isChecked: boolean, handleSubmit: any, handlePrevious: any }> = ({ isChecked, handleSubmit, handlePrevious }) => {
     const currentValidationStep = validationSchema[3];
     const [checked, setChecked] = useState(isChecked);
+
     const handleChange = (setFieldValue: (key: string, value: boolean) => void) => {
         setChecked(!checked)
         setFieldValue('isChecked', checked)
     }
+
     return <>
         <Formik
             initialValues={{ isChecked: false }}
@@ -38,7 +39,6 @@ const Agreement: React.FC<{ isChecked: boolean, handleSubmit: any, handlePreviou
                             label={<Typography><strong>I grant Integrative Health Courses permission to share my de-identified data for research or commercial activities</strong></Typography>}
                         />
                         <Typography mt={1.5} variant="body1">We assure you that no identifying data such as name or email will ever be shared as we are committed to protecting your privacy. By allowing us to use your data for research, you can assist us on our mission to improve the lives of eczema sufferers</Typography>
-
                     </FormGroup>
                     <SignpuFlexBox sx={{ justifyContent: 'space-between' }}>
                         <SubmitButton type='submit' variant="contained">
@@ -50,9 +50,7 @@ const Agreement: React.FC<{ isChecked: boolean, handleSubmit: any, handlePreviou
                     </SignpuFlexBox>
                 </Form>
             )}
-
-
-
-        </Formik> </>
+        </Formik>
+    </>
 }
 export default Agreement    

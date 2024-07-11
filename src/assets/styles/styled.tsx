@@ -1,8 +1,9 @@
 import HighlightOff from "@mui/icons-material/HighlightOff";
-import { Alert, autocompleteClasses, Button, Drawer, FormControl, FormControlLabel, ImageListItem, InputLabel, MobileStepper, OutlinedInput, RadioGroup, styled, Toolbar, Typography } from "@mui/material";
+import { Alert, autocompleteClasses, Button, Drawer, FormControl, FormControlLabel, ImageListItem, InputLabel, MobileStepper, OutlinedInput, RadioGroup, Rating, Slider, styled, TextField, Toolbar, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import { CustomRadioButtonProps, ErrorObject, InfectionIntensity, SkinToneBoxProps } from "../../Types/Types";
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { green, red } from "@mui/material/colors";
 
 export const LoginSection = styled(Box)({
 
@@ -257,7 +258,9 @@ export const Nav = styled(Box)(({ theme }) => ({
   width: '100%',
   height: '100%',
   [theme.breakpoints.up('lg')]: {
-    width: "224px"
+    width: "224px",
+    display: 'flex',
+    flexDirection: 'column'
   },
   '@media (min-width: 1920px)': {
     width: '272px'
@@ -281,7 +284,7 @@ export const NavButtonDiv = styled(Box)(({ theme }) => ({
     marginTop: '15px',
     display: 'flex',
     flexDirection: 'column',
-    height: '86%'
+    // height: ''
   }
 }))
 export const NavButton = styled(Button)(({ theme }) => ({
@@ -412,6 +415,8 @@ export const SiteInfo = styled(Box)(({ theme }) => ({
   },
 }))
 export const PlusIcon = styled(SubmitButton)(({ theme }) => ({
+  display: 'flex',
+  justifyContent: 'start',
   backgroundColor: 'white',
   minWidth: '48px',
   height: '48px',
@@ -539,18 +544,23 @@ export const CustomStepper = styled(MobileStepper)(({ theme }) => ({
     backgroundColor: '#87C81A'
   }
 }))
-export const InfectedAreaSecion = styled(Box)<InfectionIntensity>(({ theme }) => ({
+export const InfectedAreaSection = styled(Box)(({ theme }) => ({
   display: 'flex',
   flexWrap: 'wrap',
   justifyContent: 'center',
   rowGap: "8px",
   columnGap: '8px'
 }))
-export const ImageDiv = styled(ImageListItem)(({ theme }) => ({
+export const ImageDiv = styled(ImageListItem)<InfectionIntensity>(({ theme }) => ({
   width: "160px",
   height: "160px !important",
   justifyContent: 'center',
+  position: "relative",
   aspectRatio: 1,
+  borderRadius: '12px',
+  '.MuiImageListItem-img': {
+    borderRadius: '8px'
+  },
   [theme.breakpoints.up('sm')]: {
     width: '182px',
     height: '182px !important',
@@ -584,4 +594,65 @@ export const IntensitySection = styled(BodySection)(({ theme }) => ({
     width: "100%",
 
   }
+}))
+export const AdditonalSymptomSection = styled(Box)(({ theme }) => ({
+
+  [theme.breakpoints.up('sm')]: {
+    width: "68.9125%",
+    margin: '0 auto'
+  },
+  '@media (orientation: landscape)': {
+    width: "65.8125%",
+    margin: '0 auto'
+  },
+  [theme.breakpoints.up('lg')]: {
+    width: "100%",
+
+  }
+}))
+export const IntensityRange = styled(Box)(({ theme }) => ({
+  width: "24px",
+  height: '24px',
+  position: 'absolute',
+  top: "7px",
+  right: '7px',
+  borderRadius: '32px',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center'
+}))
+
+export const MultilineInput = styled(TextField)(({ theme }) => ({
+  backgroundColor: theme.status.inputBg,
+  border: 'none',
+  borderRadius: '12px !important',
+  '&  .MuiOutlinedInput-root': {
+    borderRadius: '12px'
+  },
+
+  '& .MuiInputBase-input': {
+    fontWeight: 400,
+    height: '13px',
+    borderRadius: '12px',
+  },
+  '& .MuiOutlinedInput-notchedOutline': {
+    border: 'none',
+  },
+
+  '& .MuiButtonBase-root:hover': {
+    backgroundColor: 'inherit',
+  },
+}))
+export const CustomRating = styled(Box)(({ theme }) => ({
+  width: "100%",
+  height: '48px',
+  borderRadius: "12px",
+  display: 'flex',
+  justifyContent: "flex-start"
+}))
+export const RateValue = styled(Box)(({ theme }) => ({
+  width: "10%",
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center'
 }))

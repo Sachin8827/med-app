@@ -1,9 +1,7 @@
-import { PasswordRounded, Visibility, VisibilityOff } from "@mui/icons-material"
-import { IconButton, InputAdornment, Typography } from "@mui/material"
-import { Formik } from "formik"
 import { useState } from "react"
-import { Form } from "formik"
-
+import { Visibility, VisibilityOff } from "@mui/icons-material"
+import { IconButton, InputAdornment, Typography } from "@mui/material"
+import { Formik, Form } from "formik"
 import { Label, MyformControl, SubmitButton } from "../../assets/styles/styled"
 import { EmailFormProps } from "../../Types/Types"
 import { validationSchema } from "../../Validations/SchemaValidations"
@@ -11,12 +9,15 @@ import { InputField, PasswordFormInputField } from "../common/FomInputField"
 import ImageHeading from "../common/ImageHeading"
 
 const EmailForm: React.FC<EmailFormProps> = ({ email, password, handleNext }) => {
+
     const [showPassword, setShowPassword] = useState(true);
     const handleClickShowPassword = () => setShowPassword((show: Boolean) => !show);
     const currentValidationStep = validationSchema[0];
+
     const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault();
     };
+
     return <>
         <ImageHeading heading="Sign up" />
         <Typography variant="body2">Through an individual invitation</Typography>
@@ -27,12 +28,10 @@ const EmailForm: React.FC<EmailFormProps> = ({ email, password, handleNext }) =>
         >
             {({ values }) => (
                 <Form>
-
                     <MyformControl sx={{ mt: '2rem' }}>
                         <Label shrink className='labelDesign' >Email</Label>
                         <InputField name='email' className='email' label='' id='email' value={values.email} />
                     </MyformControl>
-
                     <MyformControl sx={{ mt: '1.5rem' }}>
                         <Label shrink className='labelDesign'>Password</Label>
                         <PasswordFormInputField
@@ -54,7 +53,6 @@ const EmailForm: React.FC<EmailFormProps> = ({ email, password, handleNext }) =>
                                     </IconButton>
                                 </InputAdornment>
                             }
-
                         />
                     </MyformControl>
                     <SubmitButton variant="contained" type="submit" fullWidth>

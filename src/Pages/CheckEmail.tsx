@@ -4,6 +4,7 @@ import { FlexBox, LoginTextMessage } from "../assets/styles/styled";
 import ImageHeading from "../components/common/ImageHeading";
 
 const CheckEmail: React.FC = () => {
+
     const params = useParams();
 
     return <>
@@ -12,7 +13,6 @@ const CheckEmail: React.FC = () => {
                 xs: "100%",
                 sm: '402px',
                 lg: "508px"
-
             },
             mt: 3
         }}>

@@ -1,0 +1,28 @@
+/* styles.css */
+.st0 {
+  fill: none;
+}
+
+.st1 {
+  fill: #076eb0;
+  stroke: url(#SVGID_1_);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-dasharray: 6, 6;
+}
+
+.st2 {
+  fill-rule: evenodd;
+  clip-rule: evenodd;
+  fill: #b0d972;
+}
+
+.st3 {
+  fill-rule: evenodd;
+  clip-rule: evenodd;
+  fill: #edf3f6;
+}
+
+.st4 {
+  fill: #076eb0;
+}

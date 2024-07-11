@@ -3,13 +3,13 @@ import { Link } from "react-router-dom"
 import FormInputButton from "../components/common/Button"
 
 const ErrorComponent = () => {
+
     return <>
         <Container sx={{
             maxWidth: {
                 xs: "100%",
                 sm: '402px',
                 lg: "508px"
-
             },
             mt: 3
         }}>

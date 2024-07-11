@@ -4,6 +4,7 @@ import { FlexBox } from "../../assets/styles/styled";
 import FormInputButton from "../common/Button";
 
 const InvalidText: React.FC = () => {
+
     return <>
         <FlexBox sx={{ mt: 2 }}>
             <Typography variant='h5' >Link is invalid</Typography>

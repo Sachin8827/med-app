@@ -1,13 +1,11 @@
-import { Box, TextField, Typography } from "@mui/material";
-import { Form, Formik } from "formik";
+import { Link } from "react-router-dom";
+import { Box, Typography } from "@mui/material";
 import { useState } from "react";
-import { LoginTextMessage, SignpuFlexBox, SubmitButton } from "../../assets/styles/styled";
+import { LoginTextMessage } from "../../assets/styles/styled";
 import Agreement from "./Agreement";
 import EmailForm from "./EmailForm";
 import PersonalInfo from "./PersonalInfo";
 import SkinTone from "./SkinTone";
-import { User } from "../../Types/Types";
-import { Link } from "react-router-dom";
 
 const SignUpForm: React.FC = () => {
     const [currentStep, setCurrentStep] = useState(0);
@@ -20,19 +18,17 @@ const SignUpForm: React.FC = () => {
         gender: '',
         skinTone: '',
         isChecked: false,
-
     })
-    const handleSubmit = (values: User) => {
+
+    const handleSubmit = () => {
         console.log(formData)
     }
     const handleNext = (values: any, { setTouched }: { setTouched: ({ }) => void }) => {
-
         setFormData(prevFormData => ({
             ...prevFormData,
             ...values
         }));
         setCurrentStep(currentStep => currentStep + 1)
-
         setTouched({})
     }
     const handlePrevious = () => {
@@ -50,12 +46,10 @@ const SignUpForm: React.FC = () => {
 
     return <>
         <Box sx={{ height: !currentStep ? '35vh' : 'auto' }}>
-
             {RenderPage()}
-
             {!currentStep ? <LoginTextMessage >
                 <Box >
-                    <Typography>Already have an account? <Link to='/' style={{ color: '#076EB0', textDecoration: 'none' }}  >Log in</Link></Typography>
+                    <Typography>Already have an account? <Link to='/login' style={{ color: '#076EB0', textDecoration: 'none' }}  >Log in</Link></Typography>
                     <Typography mt={2}>By signing up, I agree to</Typography>
                     <Link to='/terms' style={{ color: '#076EB0', textDecoration: 'none' }}>terms & conditions</Link>
                 </Box>
@@ -63,4 +57,5 @@ const SignUpForm: React.FC = () => {
         </Box>
     </>
 }
+
 export default SignUpForm;

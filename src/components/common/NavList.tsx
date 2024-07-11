@@ -1,9 +1,12 @@
 import { Box, ImageList, useMediaQuery, useTheme } from "@mui/material"
-import { LoginTextMessage, LogoutButton, Nav, NavButton, NavButtonDiv } from "../../assets/styles/styled"
-import logo from '../../../public/images/logo.svg'
+import { LogoutButton, Nav, NavButton, NavButtonDiv } from "../../assets/styles/styled"
+import { useNavigate } from "react-router-dom";
 import CloseIcon from '@mui/icons-material/Close';
-export const List = ({ setDrawer }: { setDrawer: (status: boolean) => void }) => {
+import logo from '../../../public/images/logo.svg'
+export const NavList = ({ setDrawer }: { setDrawer: (status: boolean) => void }) => {
+
     const theme = useTheme();
+    const navigate = useNavigate()
     const isLargeScreen = useMediaQuery(theme.breakpoints.up('lg'));
 
     return <>
@@ -17,11 +20,12 @@ export const List = ({ setDrawer }: { setDrawer: (status: boolean) => void }) =>
                 <NavButton >Statistics</NavButton>
                 <NavButton >Help center</NavButton>
                 <NavButton >Account</NavButton>
-                <LoginTextMessage>
-                    <LogoutButton variant="outlined" fullWidth className="logout">Log out</LogoutButton>
-                </LoginTextMessage>
             </NavButtonDiv>
+            <Box sx={{ height: '-webkit-fill-available;', display: 'flex', justifyContent: "center", alignItems: 'end' }} >
+                <LogoutButton variant="outlined" fullWidth className="logout">Log out</LogoutButton>
+            </Box>
         </Nav>
 
     </>
 }
+export default NavList

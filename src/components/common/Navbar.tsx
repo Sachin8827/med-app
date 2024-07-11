@@ -4,7 +4,7 @@ import userIcon from '../../../public/images/user.svg'
 import { useState } from "react";
 import MenuIcon from '@mui/icons-material/Menu';
 import { CustomDrawer, CustomToolBar } from "../../assets/styles/styled";
-import { List } from "./List";
+import { NavList } from "./NavList";
 
 
 const Navbar: React.FC = () => {
@@ -50,7 +50,7 @@ const Navbar: React.FC = () => {
                                 anchor={isLargeScreen ? 'left' : 'top'}
                                 open={isLargeScreen ? false : isDrawerOpen}
                             >
-                                {<List setDrawer={setDrawer} />}
+                                {<NavList setDrawer={setDrawer} />}
                             </CustomDrawer>
 
                         </div>

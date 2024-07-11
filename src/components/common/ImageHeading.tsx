@@ -3,8 +3,8 @@ import { LoginSection } from "../../styled";
 import logo from '../../../public/images/logo.svg';
 
 const ImageHeading: React.FC<{ heading: string, text?: string }> = ({ heading, text }) => {
-    return <>
 
+    return <>
         <LoginSection >
             <ImageList >
                 <img src={logo} alt="Logo" />
@@ -14,7 +14,6 @@ const ImageHeading: React.FC<{ heading: string, text?: string }> = ({ heading, t
             </Typography>
             {text && <Typography variant='body2' >{text}</Typography>}
         </LoginSection>
-
     </>
 }
 export default ImageHeading;

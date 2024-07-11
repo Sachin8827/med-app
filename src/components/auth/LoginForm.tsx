@@ -11,14 +11,16 @@ import FormInputButton from "../common/Button"
 import { InputField, PasswordFormInputField } from "../common/FomInputField"
 
 const LoginForm: React.FC = () => {
+
     const [showPassword, setShowPassword] = useState(true);
     const [isLoading, setLoading] = useState(false);
-    const currentValidationStep = validationSchema[0];
     const [foundStatus, setFoundStatus] = useState(false)
+    const currentValidationStep = validationSchema[0];
     const initialValues = {
         email: '',
         password: ''
     }
+
     const handleSubmit = (values: LoginType) => {
         setLoading(true);
         setTimeout(() => {
@@ -29,24 +31,20 @@ const LoginForm: React.FC = () => {
         console.log(values)
     }
     const handleClickShowPassword = () => setShowPassword((show: Boolean) => !show);
-
     const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault();
     };
+
     return <>
-
         <LoginFormSection className='customBox' >
-
-            <Box sx={{ mt: 1 }}>
+            <Box sx={{ mt: 2 }}>
                 <Formik initialValues={initialValues} validationSchema={currentValidationStep} validateOnChange={true} onSubmit={handleSubmit}>
                     {({ }) => (
-
                         < Form >
                             <MyformControl >
                                 <Label shrink className='labelDesign' >Email</Label>
                                 <InputField name='email' className='email' label='' id='email' />
                             </MyformControl>
-
                             <MyformControl style={{ marginTop: '2rem' }}>
                                 <Label shrink className='labelDesign'>Password</Label>
                                 <PasswordFormInputField
@@ -67,18 +65,13 @@ const LoginForm: React.FC = () => {
                                             </IconButton>
                                         </InputAdornment>
                                     }
-
                                 />
                             </MyformControl>
-
                             <FormInputButton isLoading={isLoading} text='Log in' />
-
                         </Form>
-
                     )}
                 </Formik>
             </Box>
-
             <ForgotPassword variant='h6'  ><Link className='forgot' to={'/forgot'} ><Typography variant="body2" color={'primary'}>Forgot your password?</Typography></Link></ForgotPassword>
             {foundStatus ? <Flex>
                 <MyAlert severity="info" onClose={() => { setFoundStatus(false) }}>
@@ -86,8 +79,6 @@ const LoginForm: React.FC = () => {
                 </MyAlert>
             </Flex> : ""}
         </LoginFormSection>
-
-
     </>
 }
 export default LoginForm;

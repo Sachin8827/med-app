@@ -3,7 +3,6 @@ import { FlexBox } from "../assets/styles/styled";
 import SendEmailForm from "../components/auth/SendEmailForm";
 import ImageHeading from "../components/common/ImageHeading";
 
-
 const ForgotPassword: React.FC = () => {
 
     return <>
@@ -12,7 +11,6 @@ const ForgotPassword: React.FC = () => {
                 xs: "100%",
                 sm: '402px',
                 lg: "508px"
-
             }
         }}>
             <FlexBox>

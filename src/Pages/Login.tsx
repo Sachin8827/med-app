@@ -1,12 +1,10 @@
-
+import { Link } from 'react-router-dom';
 import { Container, Typography } from '@mui/material';
 import ImageHeading from '../components/common/ImageHeading';
 import LoginForm from '../components/auth/LoginForm';
 import { LoginTextMessage } from '../assets/styles/styled';
-import { Link } from 'react-router-dom';
 
 const Login = () => {
-
 
     return (
         <Container sx={{
@@ -15,10 +13,8 @@ const Login = () => {
                 xs: "100%",
                 sm: '402px',
                 lg: "508px"
-
             },
             mt: 3
-
         }} > {/* Adjusted maxWidth for responsiveness */}
             <ImageHeading heading='Hi there! Have we met before?' />
             <LoginForm />

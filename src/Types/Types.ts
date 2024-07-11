@@ -76,3 +76,10 @@ export interface GenderProps {
 export  interface InfectionIntensity extends BoxProps {
     name: string;
 }
+export interface DiseaseInputFieldProps{
+    image  : string,
+    isSelected : boolean,
+    name : string,
+    num : number,
+    onClick : () => void
+}
