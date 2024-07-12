@@ -1,8 +1,7 @@
-import { RadioGroup, } from "@mui/material"
 import { useState } from "react"
-
-import SkinToneComponent from "../common/SkinToneComponent";
+import { Form, Formik } from "formik";
 import { ErrorMsg, MyformControl, SignpuFlexBox, SkintoneGroup, SubmitButton } from "../../assets/styles/styled";
+import SkinToneComponent from "../common/SkinToneComponent";
 import ImageHeading from "../common/ImageHeading"
 import imageFirst from '../../../public/images/SkinToneAFirst.svg'
 import secondImage from '../../../public/images/SkintoneSecond.svg'
@@ -13,15 +12,16 @@ import sixthImage from '../../../public/images/SkinToneSixth.svg'
 import seventhImage from '../../../public/images/SkinToneSeventh.svg'
 import eighthImage from '../../../public/images/SkinToneEighth.svg'
 import ninthImage from '../../../public/images/SkinToneNinth.svg'
-import { Form, Formik } from "formik";
 import { validationSchema } from "../../Validations/SchemaValidations";
 const SkinTone: React.FC<{ skinTone: string, handleNext: any, handlePrevious: any }> = ({ skinTone, handleNext, handlePrevious }) => {
     const [skinToneInput, setSkinTone] = useState(skinTone);
     const currentValidationStep = validationSchema[2]
+
     const handleSkinTone = (tone: string, setFieldValue: any) => {
         setSkinTone(tone);
         setFieldValue('skinTone', tone);
     }
+
     return <>
         <ImageHeading heading="Select the option that matches your skin tone best" />
         <Formik
@@ -29,9 +29,8 @@ const SkinTone: React.FC<{ skinTone: string, handleNext: any, handlePrevious: an
             validationSchema={currentValidationStep}
             onSubmit={handleNext}
         >
-            {({ values, setFieldValue, errors, touched }) => (
+            {({ setFieldValue, errors, touched }) => (
                 <Form>
-
                     <MyformControl sx={{ mt: '1.5rem' }}>
                         <SkintoneGroup
                         >

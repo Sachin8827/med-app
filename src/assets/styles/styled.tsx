@@ -1,15 +1,18 @@
 import HighlightOff from "@mui/icons-material/HighlightOff";
-import { Alert, autocompleteClasses, Button, Drawer, FormControl, FormControlLabel, ImageListItem, InputLabel, MobileStepper, OutlinedInput, RadioGroup, Rating, Slider, styled, TextField, Toolbar, Typography } from "@mui/material";
+import { Alert, Button, CircularProgress, Drawer, FormControl, FormControlLabel, ImageListItem, InputLabel, MobileStepper, OutlinedInput, RadioGroup, Rating, Slider, styled, TextField, Toolbar, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import { CustomRadioButtonProps, ErrorObject, InfectionIntensity, SkinToneBoxProps } from "../../Types/Types";
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { green, red } from "@mui/material/colors";
-
+import image from '../../../public/images/bg_ellipses.png'
+import imageSecond from '../../../public/images/bg.png'
+import { CircularProgressbar } from "react-circular-progressbar";
 export const LoginSection = styled(Box)({
 
-  // '& .MuiTypography-root': {
-  //   marginTop: "24px",
-  // },
+  '.MuiTypography-root': {
+    marginTop: '13px',
+    textAlign: "left",
+    color: '#2F2F32',
+  },
 })
 
 export const LoginFormSection = styled(Box)({
@@ -281,10 +284,21 @@ export const CustomDrawer = styled(Drawer)(({ theme }) => ({
 }))
 export const NavButtonDiv = styled(Box)(({ theme }) => ({
   [theme.breakpoints.up('lg')]: {
-    marginTop: '15px',
+    width: "192px",
     display: 'flex',
     flexDirection: 'column',
-    // height: ''
+    margin: '0 auto',
+  }
+}))
+export const ButtonSection = styled(Box)(({ theme }) => ({
+  height: '-webkit-fill-available',
+  display: 'flex',
+  justifyContent: "center",
+  alignItems: 'end',
+  [theme.breakpoints.up('lg')]: {
+    width: "192px",
+    margin: '0 auto',
+    paddingBottom: '16px'
   }
 }))
 export const NavButton = styled(Button)(({ theme }) => ({
@@ -309,7 +323,7 @@ export const NavButton = styled(Button)(({ theme }) => ({
     width: "97%"
   }
 }))
-export const HomePageDiv = styled(Box)(({ theme }) => ({
+export const HomePageWrapper = styled(Box)(({ theme }) => ({
   display: 'flex',
   flexDirection: 'column',
   rowGap: "15px",
@@ -395,7 +409,7 @@ export const HeroText = styled(Box)(({ theme }) => ({
   },
 
 }))
-export const HomePageInfo = styled(Box)(({ theme }) => ({
+export const HomeSectionCardWrapper = styled(Box)(({ theme }) => ({
   '@media(min-width: 640px)': {
     width: "50%",
   },
@@ -404,7 +418,7 @@ export const HomePageInfo = styled(Box)(({ theme }) => ({
   }
 
 }))
-export const SiteInfo = styled(Box)(({ theme }) => ({
+export const HomePageCardWrapper = styled(Box)(({ theme }) => ({
   backgroundColor: '#F0F1F4',
   borderRadius: '12px',
   [theme.breakpoints.up('sm')]: {
@@ -416,7 +430,7 @@ export const SiteInfo = styled(Box)(({ theme }) => ({
 }))
 export const PlusIcon = styled(SubmitButton)(({ theme }) => ({
   display: 'flex',
-  justifyContent: 'start',
+  justifyContent: 'center',
   backgroundColor: 'white',
   minWidth: '48px',
   height: '48px',
@@ -431,6 +445,7 @@ export const PlusIcon = styled(SubmitButton)(({ theme }) => ({
     [theme.breakpoints.up('lg')]: {
       width: "auto",
       display: 'block',
+      justifyContent: 'start',
     }
   },
   [theme.breakpoints.up('lg')]: {
@@ -439,7 +454,7 @@ export const PlusIcon = styled(SubmitButton)(({ theme }) => ({
 
 
 }))
-export const Statistics = styled(Box)(({ theme }) => ({
+export const CardWrapper = styled(Box)(({ theme }) => ({
   display: 'flex',
   justifyContent: 'space-between',
   [theme.breakpoints.up('sm')]: {
@@ -656,3 +671,127 @@ export const RateValue = styled(Box)(({ theme }) => ({
   justifyContent: 'center',
   alignItems: 'center'
 }))
+
+export const LogoWrapper = styled(Box)(({ theme }) => ({
+  display: 'flex',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+  [theme.breakpoints.up('lg')]: {
+    padding: "32px  32px  12px  32px"
+  }
+}))
+
+
+export const EmailField = styled(OutlinedInput)<ErrorObject>(({ error }) => ({
+  '&  .MuiOutlinedInput-root': {
+    borderRadius: '12px',
+  },
+
+  '& .MuiInputBase-input': {
+    // backgroundColor: error ? '#C5141414' : '#F0F1F4',
+
+    fontWeight: 400,
+    height: '10px',
+    borderRadius: '12px',
+  },
+  '& .MuiOutlinedInput-notchedOutline': {
+    // border: 'none',
+  },
+  '& .MuiButtonBase-root': {
+    backgroundColor: '#F0F1F4',
+    borderRadius: "0",
+    borderBottomRightRadius: '12px',
+    borderTopRightRadius: '12px'
+  },
+  '& .MuiButtonBase-root:hover': {
+    backgroundColor: 'inherit',
+  },
+}));
+
+export const SummaryScreenWrapper = styled(Box)(({ theme }) => ({
+  backgroundColor: '#076EB0',
+  backgroundImage: `url(${image})`,
+  borderRadius: '0px 0px 24px 24px',
+  // backgroundPosition: "left center",
+  backgroundRepeat: "no-repeat",
+  width: "100%",
+  // height: '250px',
+  [theme.breakpoints.up('sm')]: {
+    //imageSecond
+    backgroundImage: `url(${imageSecond})`,
+  },
+  '@media (orientation: landscape)': {
+    backgroundImage: `url(${image})`,
+  },
+  [theme.breakpoints.up('lg')]: {
+    maxWidth: "1024px",
+    margin: '0 auto',
+    padding: '0 15px',
+    backgroundImage: `url(${imageSecond})`,
+  }
+
+
+}))
+export const CloseIconWrapper = styled(Box)(({ theme }) => ({
+  display: 'flex',
+  justifyContent: 'end',
+  padding: '12px 16px 12px 16px'
+}))
+
+export const SummaryContainer = styled(Box)(({ theme }) => ({
+  display: 'flex',
+  justifyContent: 'space-between',
+  padding: '0 15px',
+
+  [theme.breakpoints.up('sm')]: {
+    maxWidth: '376px',
+    margin: '0 auto',
+    justifyContent: 'space-between',
+    padding: 0
+  },
+  '@media (orientation: landscape)': {
+    maxWidth: 'inherit',
+    justifyContent: 'space-between',
+    padding: '0 15px'
+  },
+  [theme.breakpoints.up('lg')]: {
+    maxWidth: '852px'
+  }
+}))
+
+export const ProgressBarWrapper = styled(Box)(({ theme }) => ({
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'space-between',
+  padding: '10px 0',
+  [theme.breakpoints.up('lg')]: {
+    justifyContent: 'flex-start',
+    rowGap: '20px'
+  }
+}))
+export const Progress = styled(CircularProgress)(() => ({
+  color: 'green ',
+  width: "118px !important",
+  height: 'auto !important',
+  background: "linear-gradient(90deg, #E32929 25%, #D76F39 50%, #CBB64A 75%, #9CE324 100%)",
+
+  '.MuiCircularProgress-root ': {
+
+  }
+}))
+export const CustomProgressBar = styled(CircularProgressbar)(({ theme }) => ({
+  fill: "white !important",
+  '.CircularProgressbar-text': {
+    fill: "white !important",
+    fontSize: '30px',
+    lineHeight: '52px',
+    fontWeight: 600
+  },
+  [theme.breakpoints.up('sm')]: {
+    // border: '1px solid red'
+  }
+}))
+export const SymptomsWrapper = styled(Box)(({ theme }) => ({
+  display: 'flex',
+  flexDirection: 'column'
+})) 

@@ -1,16 +1,16 @@
-import { Box, Typography } from "@mui/material"
-import { HomePageInfo, SiteInfo, Statistics } from '../assets/styles/styled'
-import HelpCenter from "./common/HelpCenter"
-const RemainingHome: React.FC = () => {
-    return <>
-        <HomePageInfo >
-            <HelpCenter heading="Statistics" content="Track your PO-SCORAD over different time periods" />
-            <Statistics mt={2} sx={{ columnGap: 2 }} >
-                <HelpCenter heading="Help center" content="Guidance and FAQ " />
-                <HelpCenter heading="Account" content="Profiles and settings" />
-            </Statistics>
+import { HomeSectionCardWrapper, CardWrapper } from '../assets/styles/styled'
+import HomePageCard from "./common/HomePageCard"
 
-        </HomePageInfo>
+const RemainingHome: React.FC = () => {
+
+    return <>
+        <HomeSectionCardWrapper >
+            <HomePageCard heading="Statistics" content="Track your PO-SCORAD over different time periods" />
+            <CardWrapper mt={2} sx={{ columnGap: 2 }} >
+                <HomePageCard heading="Help center" content="Guidance and FAQ " />
+                <HomePageCard heading="Account" content="Profiles and settings" />
+            </CardWrapper>
+        </HomeSectionCardWrapper>
     </>
 }
 export default RemainingHome

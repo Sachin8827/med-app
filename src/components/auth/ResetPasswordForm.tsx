@@ -9,21 +9,23 @@ import { PasswordFormInputField } from "../common/FomInputField";
 import FormInputButton from "../common/Button";
 
 const ResetPasswordForm: React.FC<{ setAlert: (status: boolean) => void }> = ({ setAlert }) => {
+
     const currentValidationStep = validationSchema[4];
     const [showPassword, setShowPassword] = useState(false);
     const handleClickShowPassword = () => setShowPassword((show: Boolean) => !show);
     const navigate = useNavigate()
+
     const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault();
     };
     const handleSubmit = (values: { password: string }) => {
-
         setAlert(true)
         setTimeout(() => {
             setAlert(false)
             navigate('/')
         }, 1000)
     }
+
     return <>
         <Formik
             initialValues={{ password: '' }}
@@ -53,14 +55,11 @@ const ResetPasswordForm: React.FC<{ setAlert: (status: boolean) => void }> = ({ 
                                     </IconButton>
                                 </InputAdornment>
                             }
-
                         />
-
                     </MyformControl>
                     <FormInputButton isLoading={false} text='Continue' />
                 </Form>
             ))}
-
         </Formik>
         <LoginTextMessage>
             <Typography variant="body2">Take me back to<Link to={'/'} className="anchor" color="primary" >login</Link></Typography>

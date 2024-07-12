@@ -1,23 +1,26 @@
 import * as React from "react"
-import { Box, Container, useMediaQuery, useTheme } from "@mui/material"
-import { Home, HomePageDiv } from "../assets/styles/styled";
-import { NavList } from "../components/common/NavList";
+import { Container } from "@mui/material"
+import { HomePageWrapper } from "../assets/styles/styled";
 import Navbar from "../components/common/Navbar";
 import HeroSection from "../components/HeroSection";
 import RemainingHome from "../components/RemainingHome";
 
 const HomePage: React.FC = () => {
-    const theme = useTheme();
-    const isLargeScreen = useMediaQuery(theme.breakpoints.up('lg'));
-    return <>
 
-        <Home>
+    return <>
+        <Container sx={{
+            mt: 1, maxWidth: {
+                xs: '100%',
+                lg: '852px',
+                xl: '1032px'
+            }
+        }}>
             <Navbar />
-            <HomePageDiv>
+            <HomePageWrapper>
                 <HeroSection />
                 <RemainingHome />
-            </HomePageDiv>
-        </Home>
+            </HomePageWrapper>
+        </Container>
     </>
 }
 export default HomePage;

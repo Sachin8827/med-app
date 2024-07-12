@@ -19,6 +19,7 @@ const RednessIntensity: React.FC<{ handleNext: (values: any) => void, handlePrev
         setFieldValue(name, value);
         setSelected(value);
     }
+
     return <>
         <FormNavBar text='Affected area' />
         <IntensitySection>

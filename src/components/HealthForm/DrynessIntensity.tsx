@@ -3,13 +3,13 @@ import FormNavBar from "./FormNavBar"
 import { ErrorMsg, InfectedAreaSection, IntensitySection, MyformControl, SignpuFlexBox, SubmitButton } from "../../assets/styles/styled"
 import { Box } from "@mui/material"
 import { Formik, Form } from "formik"
+import { ValdationHealth } from '../../Validations/ValidationHealth'
 import firstImage from '../../../public/images/image (4).jpg'
 import secondImage from '../../../public/images/image (5).jpg'
 import thirdImage from '../../../public/images/image (6).jpg'
 import fourthImage from '../../../public/images/image (7).jpg'
 import AffectedAreas from "./common-components/AffectedAreasContent"
 import InputField from "./common-components/InputField"
-import { ValdationHealth } from '../../Validations/ValidationHealth'
 const DrynessIntensity: React.FC<{ handleNext: (values: any) => void, handlePrevious: () => void, drynessIntensity: number }> = ({ handleNext, handlePrevious, drynessIntensity }) => {
 
     const [selectedIntensity, setSelected] = useState(drynessIntensity);

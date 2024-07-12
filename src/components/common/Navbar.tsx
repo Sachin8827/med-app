@@ -1,11 +1,9 @@
-
 import { AppBar, Box, IconButton, Toolbar, Typography, useMediaQuery, useTheme } from "@mui/material";
 import userIcon from '../../../public/images/user.svg'
 import { useState } from "react";
 import MenuIcon from '@mui/icons-material/Menu';
 import { CustomDrawer, CustomToolBar } from "../../assets/styles/styled";
 import { NavList } from "./NavList";
-
 
 const Navbar: React.FC = () => {
     const [auth, setAuth] = useState(true);
@@ -19,10 +17,8 @@ const Navbar: React.FC = () => {
 
     return <>
         <Box sx={{ flexGrow: 1, display: isLargeScreen ? 'none' : 'block' }} >
-
             <AppBar position="static" sx={{ backgroundColor: "white", boxShadow: 'none' }}>
                 <CustomToolBar>
-
                     <IconButton
                         size="large"
                         aria-label="account of current user"
@@ -52,7 +48,6 @@ const Navbar: React.FC = () => {
                             >
                                 {<NavList setDrawer={setDrawer} />}
                             </CustomDrawer>
-
                         </div>
                     )}
                 </CustomToolBar>

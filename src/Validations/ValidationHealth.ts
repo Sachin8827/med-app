@@ -24,10 +24,10 @@ export const ValdationHealth = [
         skinThickening  :Yup.number().min(0, "Skin thickening Intensity required")
     }),
     Yup.object().shape({
-        psychologicalState: Yup.number().required("Required"),
-        sleepState: Yup.number().required("Required"),
-        itchingState: Yup.number().required("Required"),
-        additionalSymptoms: Yup.string(),
+        psychologicalState: Yup.number().min(1, 'Required'),
+        sleepState: Yup.number().min(1, 'Required'),
+        itchingState: Yup.number().min(1, 'Required'),
+        additionalSymptoms: Yup.string().required("Required"),
       })
 ]
 

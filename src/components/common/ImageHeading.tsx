@@ -1,5 +1,5 @@
 import { ImageList, Typography } from "@mui/material";
-import { LoginSection } from "../../styled";
+import { LoginSection } from "../../assets/styles/styled";
 import logo from '../../../public/images/logo.svg';
 
 const ImageHeading: React.FC<{ heading: string, text?: string }> = ({ heading, text }) => {

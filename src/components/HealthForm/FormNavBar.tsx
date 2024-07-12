@@ -5,19 +5,19 @@ import { NavList } from "../common/NavList";
 import ArrowBackIosNewRoundedIcon from '@mui/icons-material/ArrowBackIosNewRounded';
 import { useState } from 'react';
 const FormNavBar: React.FC<{ text: string }> = ({ text }) => {
+
+    const [isDrawerOpen, setDrawer] = useState(false);
     const [auth, setAuth] = useState(true);
     const theme = useTheme()
     const isLargeScreen = useMediaQuery(theme.breakpoints.up('lg'));
-    const [isDrawerOpen, setDrawer] = useState(false);
     const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
         setDrawer(true)
     };
+
     return <>
         <Box sx={{ flexGrow: 1, display: isLargeScreen ? 'none' : 'block', height: '64px' }} >
-
             <AppBar position="static" sx={{ backgroundColor: "white", boxShadow: 'none' }}>
                 <CustomToolBar>
-
                     <IconButton
                         size="large"
                         aria-label="account of current user"
@@ -47,7 +47,6 @@ const FormNavBar: React.FC<{ text: string }> = ({ text }) => {
                             >
                                 {<NavList setDrawer={setDrawer} />}
                             </CustomDrawer>
-
                         </div>
                     )}
                 </CustomToolBar>

@@ -1,16 +1,16 @@
-import { Box, Button, ImageList, Typography } from "@mui/material";
-import { HeroImage, HeroText, ImageSection, PlusIcon, SubmitButton } from "../assets/styles/styled";
+import { ImageList, Typography } from "@mui/material";
+import { HeroImage, HeroText, ImageSection, PlusIcon } from "../assets/styles/styled";
 import ora from '../../public/images/bg_ellipses.svg'
 import body from '../../public/images/body.svg'
 import AddIcon from '@mui/icons-material/Add';
-import { Add } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 
 const HeroSection: React.FC = () => {
+
     const navigate = useNavigate()
 
     const handleClick = () => {
-        navigate('healthform')
+        navigate('/healthtest')
     }
 
     return <>

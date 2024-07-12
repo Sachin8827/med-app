@@ -1,5 +1,5 @@
 import { Box, ImageList, useMediaQuery, useTheme } from "@mui/material"
-import { LogoutButton, Nav, NavButton, NavButtonDiv } from "../../assets/styles/styled"
+import { ButtonSection, LogoutButton, LogoWrapper, Nav, NavButton, NavButtonDiv } from "../../assets/styles/styled"
 import { useNavigate } from "react-router-dom";
 import CloseIcon from '@mui/icons-material/Close';
 import logo from '../../../public/images/logo.svg'
@@ -11,19 +11,19 @@ export const NavList = ({ setDrawer }: { setDrawer: (status: boolean) => void })
 
     return <>
         <Nav role="presentation">
-            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <LogoWrapper >
                 <ImageList > <img src={logo} alt="Logo" /></ImageList>
                 {!isLargeScreen && <CloseIcon onClick={() => setDrawer(false)} />}
-            </Box>
+            </LogoWrapper>
             <NavButtonDiv >
                 <NavButton >Home</NavButton>
                 <NavButton >Statistics</NavButton>
                 <NavButton >Help center</NavButton>
                 <NavButton >Account</NavButton>
             </NavButtonDiv>
-            <Box sx={{ height: '-webkit-fill-available;', display: 'flex', justifyContent: "center", alignItems: 'end' }} >
+            <ButtonSection  >
                 <LogoutButton variant="outlined" fullWidth className="logout">Log out</LogoutButton>
-            </Box>
+            </ButtonSection>
         </Nav>
 
     </>

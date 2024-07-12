@@ -27,8 +27,6 @@ const LoginForm: React.FC = () => {
             setLoading(false);
         }, 2000);
         (values.email != 'sachin@gmail.com') ? setFoundStatus(true) : setFoundStatus(false)
-        console.log(foundStatus)
-        console.log(values)
     }
     const handleClickShowPassword = () => setShowPassword((show: Boolean) => !show);
     const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {

@@ -1,28 +1,25 @@
-import { Box, Container, useMediaQuery, useTheme } from "@mui/material";
-import { Outlet } from "react-router-dom";
+import { Box, useMediaQuery, useTheme } from "@mui/material";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
+import HomePage from "../../Pages/HomePage";
 import { NavList } from "./NavList";
 
-const LayOut: React.FC = () => {
+const LayOut: React.FC<{ children?: any }> = ({ children }) => {
 
     const theme = useTheme();
     const isLargeScreen = useMediaQuery(theme.breakpoints.up('lg'));
-
+    const location = useLocation()
+    const navigate = useNavigate()
+    console.log(location.pathname)
     return <>
-        <Box sx={{ display: isLargeScreen ? 'flex' : 'block', width: "100%", pl: 1, minHeight: '100vh' }}>
+        <Box sx={{ display: isLargeScreen ? 'flex' : 'block', width: "100%", minHeight: '100vh' }}>
             <Box sx={{
-                pt: 2,
                 display: isLargeScreen ? 'inline-block' : 'none', boxShadow: "4px 0px 4px 0px rgba(0, 0, 0, 0.06)"
             }}>
                 <NavList setDrawer={() => { }} />
+
             </Box>
-            <Container sx={{
-                mt: 3, maxWidth: {
-                    lg: '852px',
-                    xl: '1032px'
-                }
-            }}>
-                <Outlet />
-            </Container>
+            {location.pathname == '/' ? <HomePage /> : children}
+            <Outlet />
         </Box>
     </>
 }

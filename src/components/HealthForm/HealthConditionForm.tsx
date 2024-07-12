@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { Box, Container, IconButton, Typography, useMediaQuery, useTheme } from "@mui/material";
-import ArrowBackIosNewRoundedIcon from '@mui/icons-material/ArrowBackIosNewRounded';
+import { useNavigate } from "react-router-dom";
+import { Box, Container } from "@mui/material";
 import ZoneSelectionForm from "./ZoneSelectionForm";
 import DrynessIntensity from "./DrynessIntensity";
 import RednessIntensity from "./RednessIntensity";
@@ -9,13 +9,12 @@ import Crusts from "./Crusts";
 import ScratchMarks from "./ScratchMarks";
 import SkinThickening from "./SkinThick";
 import AdditionalSymptoms from "./AddtionalSymptoms";
-import { NavList } from "../common/NavList";
+import ArrowBack from "../common/ArrowBack";
 
 const HealthCondtionForm: React.FC = () => {
 
     const [currentStep, setCurrentStep] = useState(0);
-    const theme = useTheme();
-    const isLargeScreen = useMediaQuery(theme.breakpoints.up('lg'));
+    const navigate = useNavigate()
     let [formState, setFormState] = useState({
         bodyParts: [],
         drynessIntensity: -1,
@@ -61,6 +60,7 @@ const HealthCondtionForm: React.FC = () => {
             case 5: return <ScratchMarks handleNext={handleNext} handlePrevious={handlePrevious} scratchMarksIntensity={scratchMarksIntensity} />
             case 6: return <SkinThickening handleNext={handleNext} handlePrevious={handlePrevious} skinThickening={skinThickening} />
             case 7: return <AdditionalSymptoms handleNext={handleNext} />
+            default: navigate(-1);
         }
     }
 
@@ -72,41 +72,17 @@ const HealthCondtionForm: React.FC = () => {
     }, [currentStep])
 
     return <>
-        <Box sx={{
-            display: isLargeScreen ? 'flex' : 'block', width: "100%", pl: 1,
-            minHeight: "100vh", height: 'auto'
-        }}>
-            <Box sx={{
-                pt: 2,
-                display: isLargeScreen ? 'inline-block' : 'none', boxShadow: "4px 0px 4px 0px rgba(0, 0, 0, 0.06)"
+        <Box width="100%">
+            <ArrowBack handlePrevious={handlePrevious} renderHeading={renderHeading} />
+            <Container sx={{
+                maxWidth: {
+                    xs: '100%',
+                    lg: "508px",
+                    xl: '616px'
+                }, paddingLeft: '12px', paddingRight: '12px'
             }}>
-                <NavList setDrawer={() => { }} />
-            </Box>
-            <Box width={"100%"}>
-                <Box display={isLargeScreen ? 'block' : "none"}>
-                    <IconButton
-                        sx={{ borderRadius: '12px' }}
-                        onClick={handlePrevious}
-                        size="large"
-                        aria-label="account of current user"
-                        aria-controls="menu-appbar"
-                        aria-haspopup="true"
-                        color="inherit"
-                    >
-                        <ArrowBackIosNewRoundedIcon sx={{ color: '#A3A3A3', width: '16px' }} />
-                        <Typography ml={1.5} color='primary.main'>{renderHeading()}</Typography>
-                    </IconButton>
-                </Box>
-                <Container sx={{
-                    maxWidth: {
-                        xs: '100%',
-                        lg: "508px",
-                        xl: '616px'
-                    }, paddingLeft: '12px', paddingRight: '12px'
-                }}>
-                    {RenderPage()}
-                </Container>
-            </Box>
+                {RenderPage()}
+            </Container>
         </Box>
     </>
 }

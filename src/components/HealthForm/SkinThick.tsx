@@ -19,6 +19,7 @@ const SkinThickening: React.FC<{ handleNext: (values: any) => void, handlePrevio
         setFieldValue(name, value);
         setSelected(value);
     }
+
     return <>
         <FormNavBar text='Affected area' />
         <IntensitySection>
@@ -40,8 +41,8 @@ const SkinThickening: React.FC<{ handleNext: (values: any) => void, handlePrevio
                                 </InfectedAreaSection>
                                 {errors.skinThickening && touched.skinThickening ? <ErrorMsg variant='body2' color='error'>{errors.skinThickening}</ErrorMsg> : ""}
                             </MyformControl >
-                            <SignpuFlexBox disabled={values.skinThickening < 0} sx={{ justifyContent: 'space-between' }}>
-                                <SubmitButton type='submit' variant="contained">
+                            <SignpuFlexBox sx={{ justifyContent: 'space-between' }}>
+                                <SubmitButton type='submit' variant="contained" disabled={values.skinThickening < 0}>
                                     Next
                                 </SubmitButton>
                                 <SubmitButton variant="outlined" onClick={handlePrevious}>

@@ -40,8 +40,8 @@ const Crusts: React.FC<{ handleNext: (values: any) => void, handlePrevious: () =
                                 </InfectedAreaSection>
                                 {errors.crustsIntensity && touched.crustsIntensity ? <ErrorMsg variant='body2' color='error'>{errors.crustsIntensity}</ErrorMsg> : ""}
                             </MyformControl >
-                            <SignpuFlexBox disabled={values.crustsIntensity < 0} sx={{ justifyContent: 'space-between' }}>
-                                <SubmitButton type='submit' variant="contained">
+                            <SignpuFlexBox sx={{ justifyContent: 'space-between' }}>
+                                <SubmitButton type='submit' variant="contained" disabled={values.crustsIntensity < 0} >
                                     Next
                                 </SubmitButton>
                                 <SubmitButton variant="outlined" onClick={handlePrevious}>

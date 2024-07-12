@@ -83,3 +83,21 @@ export interface DiseaseInputFieldProps{
     num : number,
     onClick : () => void
 }
+export interface HomePageCardProps {
+    heading: string,
+    content: string
+}
+export interface SymptomsData {
+    additionalSymptoms: string;
+    bodyParts: string[];
+    crustsIntensity: number;
+    drynessIntensity: number;
+    itchingState: number;
+    psychologicalState: number;
+    rednessIntensity: number;
+    scratchMarksIntensity: number;
+    skinThickening: number;
+    sleepState: number;
+    swellingIntensity: number;
+  }
+  

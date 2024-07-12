@@ -19,6 +19,7 @@ const Swelling: React.FC<{ handleNext: (values: any) => void, handlePrevious: ()
         setFieldValue(name, value);
         setSelected(value);
     }
+
     return <>
         <FormNavBar text='Affected area' />
         <IntensitySection>

@@ -1,11 +1,10 @@
-
 import { Container } from "@mui/system";
 import { CloseCircleIcon } from "../assets/styles/styled";
 import InvalidText from "../components/auth/InvalidText";
 import ImageHeading from "../components/common/ImageHeading";
 
-
 const InvalidLink = () => {
+
     return <>
         <Container sx={{
             maxWidth: {

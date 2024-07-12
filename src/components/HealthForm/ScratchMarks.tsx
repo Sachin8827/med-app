@@ -40,8 +40,8 @@ const ScratchMarks: React.FC<{ handleNext: (values: any) => void, handlePrevious
                                 </InfectedAreaSection>
                                 {errors.scratchMarksIntensity && touched.scratchMarksIntensity ? <ErrorMsg variant='body2' color='error'>{errors.scratchMarksIntensity}</ErrorMsg> : ""}
                             </MyformControl >
-                            <SignpuFlexBox disabled={values.scratchMarksIntensity < 0} sx={{ justifyContent: 'space-between' }}>
-                                <SubmitButton type='submit' variant="contained">
+                            <SignpuFlexBox sx={{ justifyContent: 'space-between' }}>
+                                <SubmitButton type='submit' variant="contained" disabled={values.scratchMarksIntensity < 0}>
                                     Next
                                 </SubmitButton>
                                 <SubmitButton variant="outlined" onClick={handlePrevious}>

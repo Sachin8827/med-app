@@ -42,5 +42,4 @@ const SendEmailForm: React.FC = () => {
         </LoginTextMessage>
     </>
 }
-
 export default SendEmailForm;
