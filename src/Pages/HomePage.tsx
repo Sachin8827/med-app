@@ -1,5 +1,5 @@
 import * as React from "react"
-import { Container } from "@mui/material"
+import { Container, useMediaQuery } from "@mui/material"
 import { HomePageWrapper } from "../assets/styles/styled";
 import Navbar from "../components/common/Navbar";
 import HeroSection from "../components/HeroSection";
@@ -8,6 +8,8 @@ import HomeScoreSection from "../components/HomeScoreSection";
 
 const HomePage: React.FC = () => {
 
+    const isLandscape = useMediaQuery('(orientation: landscape)');
+    console.log(isLandscape)
     return <>
         <Container sx={{
             mt: 1, maxWidth: {
@@ -19,7 +21,7 @@ const HomePage: React.FC = () => {
             <Navbar />
             <HomePageWrapper>
                 {/* <HeroSection /> */}
-                <HomeScoreSection/>
+                <HomeScoreSection />
                 <RemainingHome />
             </HomePageWrapper>
         </Container>

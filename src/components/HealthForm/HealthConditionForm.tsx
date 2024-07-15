@@ -14,8 +14,7 @@ import ArrowBack from "../common/ArrowBack";
 const HealthCondtionForm: React.FC = () => {
 
     const [currentStep, setCurrentStep] = useState(0);
-    const navigate = useNavigate()
-    let [formState, setFormState] = useState({
+    const [formState, setFormState] = useState({
         bodyParts: [],
         drynessIntensity: -1,
         rednessIntensity: -1,
@@ -29,12 +28,19 @@ const HealthCondtionForm: React.FC = () => {
         additionalSymptoms: '',
     });
 
+    const navigate = useNavigate()
+
     const handlePrevious = () => {
-        setCurrentStep(currentStep => currentStep - 1)
+        if (currentStep > 0)
+            setCurrentStep(currentStep => currentStep - 1)
+        else
+            navigate(-1);
     }
+
     const handleSubmit = () => {
         console.log(formState)
     }
+
     const handleNext = (values: any) => {
         console.log(values)
         setFormState(prevFormData => ({
@@ -43,12 +49,13 @@ const HealthCondtionForm: React.FC = () => {
         }));
         setCurrentStep(currentStep => currentStep + 1)
     }
+
     const renderHeading = () => {
         if (currentStep == 0) return "Home";
         else if (currentStep <= 6) return "Affected areas"
         else return "Intensity of your symptoms"
-
     }
+
     const RenderPage = () => {
         const { bodyParts, drynessIntensity, rednessIntensity, swellingIntensity, crustsIntensity, scratchMarksIntensity, skinThickening } = formState
         switch (currentStep) {
@@ -60,7 +67,7 @@ const HealthCondtionForm: React.FC = () => {
             case 5: return <ScratchMarks handleNext={handleNext} handlePrevious={handlePrevious} scratchMarksIntensity={scratchMarksIntensity} />
             case 6: return <SkinThickening handleNext={handleNext} handlePrevious={handlePrevious} skinThickening={skinThickening} />
             case 7: return <AdditionalSymptoms handleNext={handleNext} />
-            default: navigate(-1);
+            // default: navigate(-1);
         }
     }
 
@@ -68,6 +75,7 @@ const HealthCondtionForm: React.FC = () => {
         if (currentStep == 8) {
             console.log(currentStep)
             handleSubmit()
+            navigate('/summary')
         }
     }, [currentStep])
 

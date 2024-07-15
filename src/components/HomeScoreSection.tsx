@@ -1,18 +1,20 @@
 import { Box, Typography } from "@mui/material"
-import { CustomProgressBar, HomeIcon, HomeScoreWrapper, PlusIcon, TestScoreWrapper } from "../assets/styles/styled"
+import { HomeIcon, HomeProgressBar, HomeScoreWrapper, TestScoreWrapper } from "../assets/styles/styled"
 import GradientSVG from "./common/GradientSvg"
 import AddIcon from '@mui/icons-material/Add';
+import { useNavigate } from "react-router-dom";
 const HomeScoreSection: React.FC = () => {
 
     const idCSS = "hello";
     const percentage = 56;
+    const navigate = useNavigate()
 
     return <>
         <HomeScoreWrapper pt={3} pl={3} pb={3} >
             <TestScoreWrapper>
-                <div  className="ring">
+                <div className="ring">
                     <GradientSVG />
-                    <CustomProgressBar
+                    <HomeProgressBar
                         strokeWidth={8}
                         value={percentage}
                         text={percentage + ''}
@@ -21,7 +23,6 @@ const HomeScoreSection: React.FC = () => {
                             trail: {
                                 stroke: "#076EB0"
                             }
-
                         }}
                     />
                 </div>
@@ -30,7 +31,7 @@ const HomeScoreSection: React.FC = () => {
                     <Typography fontSize={14} variant='body1' color={'white'}>January 30, 2024</Typography>
                 </Box>
             </TestScoreWrapper>
-            <HomeIcon  variant='outlined' onClick={() =>{}}   > <AddIcon fontSize="large" /><Typography className="test">Take the new test</Typography>  </HomeIcon>
+            <HomeIcon variant='outlined' onClick={() => { navigate('/healthtest') }}   > <AddIcon fontSize="small" /><Typography variant="button" className="test">Take test</Typography>  </HomeIcon>
         </HomeScoreWrapper>
     </>
 }

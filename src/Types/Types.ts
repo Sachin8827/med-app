@@ -85,7 +85,8 @@ export interface DiseaseInputFieldProps{
 }
 export interface HomePageCardProps {
     heading: string,
-    content: string
+    content: string,
+    onclick   :() =>void
 }
 export interface SymptomsData {
     additionalSymptoms: string;
@@ -100,4 +101,6 @@ export interface SymptomsData {
     sleepState: number;
     swellingIntensity: number;
   }
-  
+  export interface UserProfileProps extends BoxProps{
+    isSelected : boolean
+  }

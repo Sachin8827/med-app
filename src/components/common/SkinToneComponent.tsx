@@ -1,6 +1,6 @@
-import { SkinToneBox, SkinToneButton, SkinToneHeading } from "../../assets/styles/styled";
+import { SkinToneBox, SkinToneButton, SkinToneHeading, SkintoneImage } from "../../assets/styles/styled";
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import { ImageList, Typography } from "@mui/material";
+import { ImageList, Typography, useTheme } from "@mui/material";
 import { SkinToneProps } from "../../Types/Types";
 const SkinToneComponent: React.FC<SkinToneProps> = ({ isError, name, heading, firstImage, secondImage, thirdImage, isSelected, handleSkinTone }) => {
 
@@ -11,16 +11,15 @@ const SkinToneComponent: React.FC<SkinToneProps> = ({ isError, name, heading, fi
                 {isSelected && <CheckCircleIcon sx={{ color: '#87C81A' }} />}
             </SkinToneHeading>
             <SkinToneButton >
-                <ImageList sx={{ width: 'auto' }} >
-                    <img src={firstImage} width='100%' alt="Logo" style={{ borderRadius: '12px' }} />
-                </ImageList>
-                <ImageList >
-                    <img src={secondImage} width='100%' alt="Logo" style={{ borderRadius: '12px' }} />
-                </ImageList>
-                <ImageList >
-                    <img src={thirdImage} width='100%' alt="Logo" style={{ borderRadius: '12px' }} />
-                </ImageList>
-
+                <SkintoneImage >
+                    <img src={firstImage} width='100%' height={'100%'} alt="Logo" style={{ borderRadius: '12px' }} />
+                </SkintoneImage>
+                <SkintoneImage >
+                    <img src={secondImage} width='100%' height={'100%'} alt="Logo" style={{ borderRadius: '12px' }} />
+                </SkintoneImage>
+                <SkintoneImage >
+                    <img src={thirdImage} width='100%' height={'100%'} alt="Logo" style={{ borderRadius: '12px' }} />
+                </SkintoneImage>
             </SkinToneButton>
         </SkinToneBox>
     </>

@@ -2,8 +2,8 @@ import { Visibility, VisibilityOff } from "@mui/icons-material"
 import { IconButton, InputAdornment, Typography } from "@mui/material"
 import { Box, } from "@mui/material"
 import { Formik, Form } from "formik"
-import { useState } from "react"
-import { Link } from "react-router-dom"
+import { useEffect, useState } from "react"
+import { Link, useNavigate } from "react-router-dom"
 import { Flex, ForgotPassword, Label, LoginFormSection, MyAlert, MyformControl } from "../../assets/styles/styled"
 import { LoginType, User } from "../../Types/Types"
 import { validationSchema } from "../../Validations/SchemaValidations"
@@ -16,6 +16,7 @@ const LoginForm: React.FC = () => {
     const [isLoading, setLoading] = useState(false);
     const [foundStatus, setFoundStatus] = useState(false)
     const currentValidationStep = validationSchema[0];
+    const navigate = useNavigate();
     const initialValues = {
         email: '',
         password: ''
@@ -25,14 +26,22 @@ const LoginForm: React.FC = () => {
         setLoading(true);
         setTimeout(() => {
             setLoading(false);
+
         }, 2000);
-        (values.email != 'sachin@gmail.com') ? setFoundStatus(true) : setFoundStatus(false)
+        (values.email == 'sachin@gmail.com') ? setFoundStatus(true) : setFoundStatus(false)
+
     }
     const handleClickShowPassword = () => setShowPassword((show: Boolean) => !show);
     const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault();
     };
 
+    useEffect(() => {
+
+        if (foundStatus) {
+            navigate('/')
+        }
+    }, [foundStatus])
     return <>
         <LoginFormSection className='customBox' >
             <Box sx={{ mt: 2 }}>

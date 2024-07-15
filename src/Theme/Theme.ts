@@ -35,6 +35,11 @@ export const theme = createTheme({
     },
     typography: {
       fontFamily: ['Inter', 'sans-serif'].join(','),
+      h4 : {
+        fontSize  :"24px",
+        fontWeight : 600,
+        lineHeight  :'32px'
+      },
       h5: {
         lineHeight: '32px',
         fontWeight: 600,

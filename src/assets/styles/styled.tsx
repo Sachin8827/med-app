@@ -1,15 +1,16 @@
 import HighlightOff from "@mui/icons-material/HighlightOff";
-import { Alert, Button, CircularProgress, Drawer, FormControl, FormControlLabel, ImageListItem, InputLabel, MobileStepper, OutlinedInput, RadioGroup, Rating, Slider, styled, TextField, Toolbar, Typography } from "@mui/material";
+import { Alert, Button, CircularProgress, Drawer, FormControl, FormControlLabel, ImageList, ImageListItem, InputLabel, MobileStepper, OutlinedInput, RadioGroup, Rating, Slider, styled, TextField, Toolbar, Typography } from "@mui/material";
 import { Box } from "@mui/system";
-import { CustomRadioButtonProps, ErrorObject, InfectionIntensity, SkinToneBoxProps } from "../../Types/Types";
+import { CustomRadioButtonProps, ErrorObject, InfectionIntensity, SkinToneBoxProps, UserProfileProps } from "../../Types/Types";
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import image from '../../../public/images/bg_ellipses.png'
-import imageSecond from '../../../public/images/bg.png'
+import imageSecond from '../../../public/images/imageLgSize.png'
 import { CircularProgressbar } from "react-circular-progressbar";
 import homeImage from '../../../public/images/Group3.png'
 import homeImageLandscape from '../../../public/images/Group3 Lanscape.png'
 import homeLargeScreeImage from '../../../public/images/Group 23.png'
 import homeXlScreenImage from '../../../public/images/Groupxl.png'
+// import homeImageSmSize from '../../../public/images/homeImageSmSize.png'
 import { theme } from "../../Theme/Theme";
 export const LoginSection = styled(Box)({
 
@@ -248,7 +249,8 @@ export const SkinToneButton = styled(Box)(({ theme }) => ({
   '.MuiImageList-root': {
     display: 'block',
     [theme.breakpoints.up('lg')]: {
-      width: '83px'
+      width: '83px',
+      columnGap: '15px'
     }
   },
   '.Skin': {
@@ -256,7 +258,26 @@ export const SkinToneButton = styled(Box)(({ theme }) => ({
     borderRadius: '12px',
   }
 }))
+export const SkintoneImage = styled(ImageList)(({ theme }) => ({
+  width: "93px",
+  height: '93px',
+  overflowY: 'unset',
+  '@media(orientation  : landscape)': {
+    width: '110px',
+    height: '110px'
+  },
+  [theme.breakpoints.up('lg')]: {
+    width: '67px',
+    height: '67px'
+  },
+  [theme.breakpoints.up('xl')]: {
+    width: '85px',
+    height: '85px'
+  }
+}))
 export const CustomToolBar = styled(Toolbar)(({ theme }) => ({
+  display: 'flex',
+  justifyContent: 'space-between',
   padding: '0px',
   '.MuiButtonBase-root': {
     paddingLeft: '0px'
@@ -318,10 +339,11 @@ export const NavButton = styled(Button)(({ theme }) => ({
   justifyContent: "center",
   ':hover': {
     color: theme.palette.primary.main,
+    backgroundColor: 'transparent',
   },
   backgroundColor: 'white',
   '.MuiButton-root:hover': {
-    backgroundColor: theme.palette.primary.light,
+
   },
   [theme.breakpoints.up('lg')]: {
     justifyContent: 'start',
@@ -332,7 +354,7 @@ export const HomePageWrapper = styled(Box)(({ theme }) => ({
   display: 'flex',
   flexDirection: 'column',
   rowGap: "15px",
-  '@media (min-width: 640px)': {
+  '@media (orientation : landscape)': {
     flexDirection: 'row',
     columnGap: '8px',
   },
@@ -415,7 +437,7 @@ export const HeroText = styled(Box)(({ theme }) => ({
 
 }))
 export const HomeSectionCardWrapper = styled(Box)(({ theme }) => ({
-  '@media(min-width: 640px)': {
+  '@media(orientation  : landscape)': {
     width: "50%",
   },
   [theme.breakpoints.up("lg")]: {
@@ -426,6 +448,8 @@ export const HomeSectionCardWrapper = styled(Box)(({ theme }) => ({
 export const HomePageCardWrapper = styled(Box)(({ theme }) => ({
   backgroundColor: '#F0F1F4',
   borderRadius: '12px',
+  width: '100%',
+  cursor: 'pointer',
   [theme.breakpoints.up('sm')]: {
     width: "100%",
   },
@@ -467,7 +491,7 @@ export const CardWrapper = styled(Box)(({ theme }) => ({
     flexDirection: 'column',
     rowGap: "15px",
   },
-  '@media(min-width: 640px)': {
+  '@media(orientation  : landscape)': {
     flexDirection: 'row',
     columnGap: "8px"
   }
@@ -485,7 +509,8 @@ export const SkintoneGroup = styled(RadioGroup)(({ theme }) => ({
   [theme.breakpoints.up('lg')]: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    rowGap: "15px"
+    rowGap: "15px",
+    // columnGap: ''
   }
 }))
 export const BodySection = styled(Box)(({ theme }) => ({
@@ -725,6 +750,7 @@ export const SummaryScreenWrapper = styled(Box)(({ theme }) => ({
   [theme.breakpoints.up('sm')]: {
     //imageSecond
     backgroundImage: `url(${imageSecond})`,
+
   },
   '@media (orientation: landscape)': {
     backgroundImage: `url(${image})`,
@@ -734,6 +760,10 @@ export const SummaryScreenWrapper = styled(Box)(({ theme }) => ({
     margin: '0 auto',
     padding: '0 15px',
     backgroundImage: `url(${imageSecond})`,
+  },
+  [theme.breakpoints.up('xl')]: {
+    maxWidth: '1240px',
+    backgroundImage: `url(${homeXlScreenImage})`,
   }
 }))
 export const CloseIconWrapper = styled(Box)(({ theme }) => ({
@@ -748,18 +778,23 @@ export const SummaryContainer = styled(Box)(({ theme }) => ({
   padding: '0 15px',
 
   [theme.breakpoints.up('sm')]: {
-    maxWidth: '376px',
+    width: '62.66%',
     margin: '0 auto',
     justifyContent: 'space-between',
     padding: 0
   },
   '@media (orientation: landscape)': {
+    width: "100%",
     maxWidth: 'inherit',
     justifyContent: 'space-between',
     padding: '0 15px'
   },
   [theme.breakpoints.up('lg')]: {
-    maxWidth: '852px'
+    maxWidth: '852px',
+    padding: '0'
+  },
+  [theme.breakpoints.up('xl')]: {
+    maxWidth: '1032px'
   }
 }))
 
@@ -767,10 +802,19 @@ export const ProgressBarWrapper = styled(Box)(({ theme }) => ({
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'space-between',
-  padding: '10px 0',
+  paddingTop: '8px',
+  paddingBottom: '24px',
+  '@media (orientation: landscape)': {
+    width: "118px"
+  },
   [theme.breakpoints.up('lg')]: {
     justifyContent: 'flex-start',
-    rowGap: '20px'
+    rowGap: '20px',
+    width: '160px'
+  },
+  [theme.breakpoints.up('xl')]: {
+    width: '184px',
+    height: '184px'
   }
 }))
 export const Progress = styled(CircularProgress)(() => ({
@@ -785,21 +829,52 @@ export const Progress = styled(CircularProgress)(() => ({
 }))
 export const CustomProgressBar = styled(CircularProgressbar)(({ theme }) => ({
   fill: "white !important",
+  width: '118px',
   '.CircularProgressbar-text': {
     fill: "white !important",
     fontSize: '30px',
     lineHeight: '52px',
     fontWeight: 600
   },
-  [theme.breakpoints.up('sm')]: {
-    // border: '1px solid red'
+  [theme.breakpoints.up('lg')]: {
+    width: '160px'
+  }
+}))
+export const HomeProgressBar = styled(CircularProgressbar)(({ theme }) => ({
+  fill: "white !important",
+  '.CircularProgressbar-text': {
+    fill: "white !important",
+    fontSize: '30px',
+    lineHeight: '52px',
+    fontWeight: 600
+  },
+  [theme.breakpoints.up('lg')]: {
+    // width: '160px'
   }
 }))
 export const SymptomsWrapper = styled(Box)(({ theme }) => ({
   display: 'flex',
-  flexDirection: 'column'
-}))
+  flexDirection: 'column',
+  paddingBottom: '30px',
+  width: '100%',
 
+
+  [theme.breakpoints.up('lg')]: {
+    width: '100%',
+    flexDirection: 'row',
+    columnGap: '32px'
+  }
+}))
+export const SymptomsCardWrapper = styled(Box)(() => ({
+  display: 'flex',
+  flexDirection: 'column',
+  rowGap: '8px',
+  [theme.breakpoints.up('lg')]: {
+    rowGap: '16px '
+  }
+
+
+}))
 export const HomeScoreWrapper = styled(Box)(({ theme }) => ({
   backgroundColor: '#076EB0',
   backgroundImage: `url(${homeImage})`,
@@ -809,23 +884,26 @@ export const HomeScoreWrapper = styled(Box)(({ theme }) => ({
   width: "100%",
   // height: '250px',
   [theme.breakpoints.up('sm')]: {
-    //imageSecond
+    //imageSecond 
+    width: '100%',
     backgroundImage: `url(${homeImage})`,
   },
   '@media (orientation: landscape)': {
     backgroundImage: `url(${homeImageLandscape})`,
+    width: '50%'
   },
   [theme.breakpoints.up('lg')]: {
     // maxWidth: "1024px",
+    width: '100%',
     paddingTop: '40px',
     paddingLeft: '40px',
-    paddingBottom : '40px',
+    paddingBottom: '40px',
     backgroundImage: `url(${homeLargeScreeImage})`,
   },
-  [theme.breakpoints.up('xl')]  :{
+  [theme.breakpoints.up('xl')]: {
     paddingTop: '56px',
     paddingLeft: '56px',
-    paddingBottom : '56px',
+    paddingBottom: '56px',
     backgroundImage: `url(${homeXlScreenImage})`,
   }
 }))
@@ -836,15 +914,17 @@ export const TestScoreWrapper = styled(Box)(({ theme }) => ({
   '.ring': {
     width: '100px',
     height: '100px',
+
     [theme.breakpoints.up('lg')]: {
       width: '152px',
       height: '152px'
     },
-    [theme.breakpoints.up('xl')]  :{
-      width : '184px',
-      height : '184px'
+    [theme.breakpoints.up('xl')]: {
+      width: '184px',
+      height: '184px'
     }
   },
+
   [theme.breakpoints.up('lg')]: {
     flexDirection: 'row',
     columnGap: '16px',
@@ -859,6 +939,26 @@ export const HomeIcon = styled(PlusIcon)(({ theme }) => ({
   },
   [theme.breakpoints.up('lg')]: {
     marginTop: '56px',
-   
+
   }
+}))
+export const BodyDiv = styled(Box)(({ theme }) => ({
+  width: '158px',
+  aspectRatio: '0.47878787878',
+  [theme.breakpoints.up('sm')]: {
+    width: '132px'
+  },
+  "@media (orientation: landscape)": {
+    width: '132px'
+  },
+  [theme.breakpoints.up('lg')]: {
+    width: '147xpx'
+  }
+
+}))
+export const UserProfileDiv = styled(Box)<UserProfileProps>(({ isSelected, theme }) => ({
+  padding: '16px 24px 16px 24px',
+  borderRadius: '12px',
+  border: isSelected ? '1px solid #B3D06A' : '1px solid transparent',
+  backgroundColor: isSelected ? '#E2F2C8' : "#F0F1F4"
 }))

@@ -8,7 +8,6 @@ const LayOut: React.FC<{ children?: any }> = ({ children }) => {
     const theme = useTheme();
     const isLargeScreen = useMediaQuery(theme.breakpoints.up('lg'));
     const location = useLocation()
-    const navigate = useNavigate()
     console.log(location.pathname)
     return <>
         <Box sx={{ display: isLargeScreen ? 'flex' : 'block', width: "100%", minHeight: '100vh' }}>
@@ -16,7 +15,6 @@ const LayOut: React.FC<{ children?: any }> = ({ children }) => {
                 display: isLargeScreen ? 'inline-block' : 'none', boxShadow: "4px 0px 4px 0px rgba(0, 0, 0, 0.06)"
             }}>
                 <NavList setDrawer={() => { }} />
-
             </Box>
             {location.pathname == '/' ? <HomePage /> : children}
             <Outlet />

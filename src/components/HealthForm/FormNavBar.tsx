@@ -4,7 +4,7 @@ import { CustomDrawer, CustomToolBar } from "../../assets/styles/styled";
 import { NavList } from "../common/NavList";
 import ArrowBackIosNewRoundedIcon from '@mui/icons-material/ArrowBackIosNewRounded';
 import { useState } from 'react';
-const FormNavBar: React.FC<{ text: string }> = ({ text }) => {
+const FormNavBar: React.FC<{ text: string, onclick: () => void }> = ({ text, onclick }) => {
 
     const [isDrawerOpen, setDrawer] = useState(false);
     const [auth, setAuth] = useState(true);
@@ -15,21 +15,23 @@ const FormNavBar: React.FC<{ text: string }> = ({ text }) => {
     };
 
     return <>
-        <Box sx={{ flexGrow: 1, display: isLargeScreen ? 'none' : 'block', height: '64px' }} >
+        <Box sx={{ flexGrow: 1, display: isLargeScreen ? 'none' : 'block', height: '64px', }} >
             <AppBar position="static" sx={{ backgroundColor: "white", boxShadow: 'none' }}>
                 <CustomToolBar>
-                    <IconButton
-                        size="large"
-                        aria-label="account of current user"
-                        aria-controls="menu-appbar"
-                        aria-haspopup="true"
-                        color="inherit"
-                    >
-                        <ArrowBackIosNewRoundedIcon sx={{ color: '#A3A3A3', width: '16px' }} />
-                    </IconButton>
-                    <Typography variant="subtitle1" color={'primary.main'} component="div" sx={{ flexGrow: 1 }}>
-                        {text}
-                    </Typography>
+                    <Box onClick={onclick} display={'flex'} sx={{ flexDirection: 'row', alignItems: 'center' }}>
+                        <IconButton
+                            size="large"
+                            aria-label="account of current user"
+                            aria-controls="menu-appbar"
+                            aria-haspopup="true"
+                            color="inherit"
+                        >
+                            <ArrowBackIosNewRoundedIcon sx={{ color: '#A3A3A3', width: '16px' }} />
+                        </IconButton>
+                        <Typography variant="subtitle1" color={'primary.main'} component="div" sx={{ flexGrow: 1 }}>
+                            {text}
+                        </Typography>
+                    </Box>
                     {auth && (
                         <div>
                             <IconButton
