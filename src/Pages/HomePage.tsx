@@ -4,6 +4,7 @@ import { HomePageWrapper } from "../assets/styles/styled";
 import Navbar from "../components/common/Navbar";
 import HeroSection from "../components/HeroSection";
 import RemainingHome from "../components/RemainingHome";
+import HomeScoreSection from "../components/HomeScoreSection";
 
 const HomePage: React.FC = () => {
 
@@ -17,7 +18,8 @@ const HomePage: React.FC = () => {
         }}>
             <Navbar />
             <HomePageWrapper>
-                <HeroSection />
+                {/* <HeroSection /> */}
+                <HomeScoreSection/>
                 <RemainingHome />
             </HomePageWrapper>
         </Container>

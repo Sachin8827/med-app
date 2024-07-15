@@ -6,6 +6,11 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import image from '../../../public/images/bg_ellipses.png'
 import imageSecond from '../../../public/images/bg.png'
 import { CircularProgressbar } from "react-circular-progressbar";
+import homeImage from '../../../public/images/Group3.png'
+import homeImageLandscape from '../../../public/images/Group3 Lanscape.png'
+import homeLargeScreeImage from '../../../public/images/Group 23.png'
+import homeXlScreenImage from '../../../public/images/Groupxl.png'
+import { theme } from "../../Theme/Theme";
 export const LoginSection = styled(Box)({
 
   '.MuiTypography-root': {
@@ -435,7 +440,7 @@ export const PlusIcon = styled(SubmitButton)(({ theme }) => ({
   minWidth: '48px',
   height: '48px',
   width: '48px',
-  maxWidth: '160px',
+  // maxWidth: '160px',
   ':hover': {
     textDecoration: "none",
     backgroundColor: 'white'
@@ -450,6 +455,7 @@ export const PlusIcon = styled(SubmitButton)(({ theme }) => ({
   },
   [theme.breakpoints.up('lg')]: {
     width: "auto",
+
   }
 
 
@@ -729,8 +735,6 @@ export const SummaryScreenWrapper = styled(Box)(({ theme }) => ({
     padding: '0 15px',
     backgroundImage: `url(${imageSecond})`,
   }
-
-
 }))
 export const CloseIconWrapper = styled(Box)(({ theme }) => ({
   display: 'flex',
@@ -794,4 +798,67 @@ export const CustomProgressBar = styled(CircularProgressbar)(({ theme }) => ({
 export const SymptomsWrapper = styled(Box)(({ theme }) => ({
   display: 'flex',
   flexDirection: 'column'
-})) 
+}))
+
+export const HomeScoreWrapper = styled(Box)(({ theme }) => ({
+  backgroundColor: '#076EB0',
+  backgroundImage: `url(${homeImage})`,
+  borderRadius: '16px',
+  // backgroundPosition: "left center",
+  backgroundRepeat: "no-repeat",
+  width: "100%",
+  // height: '250px',
+  [theme.breakpoints.up('sm')]: {
+    //imageSecond
+    backgroundImage: `url(${homeImage})`,
+  },
+  '@media (orientation: landscape)': {
+    backgroundImage: `url(${homeImageLandscape})`,
+  },
+  [theme.breakpoints.up('lg')]: {
+    // maxWidth: "1024px",
+    paddingTop: '40px',
+    paddingLeft: '40px',
+    paddingBottom : '40px',
+    backgroundImage: `url(${homeLargeScreeImage})`,
+  },
+  [theme.breakpoints.up('xl')]  :{
+    paddingTop: '56px',
+    paddingLeft: '56px',
+    paddingBottom : '56px',
+    backgroundImage: `url(${homeXlScreenImage})`,
+  }
+}))
+export const TestScoreWrapper = styled(Box)(({ theme }) => ({
+  display: 'flex',
+  flexDirection: 'column',
+  rowGap: '8px',
+  '.ring': {
+    width: '100px',
+    height: '100px',
+    [theme.breakpoints.up('lg')]: {
+      width: '152px',
+      height: '152px'
+    },
+    [theme.breakpoints.up('xl')]  :{
+      width : '184px',
+      height : '184px'
+    }
+  },
+  [theme.breakpoints.up('lg')]: {
+    flexDirection: 'row',
+    columnGap: '16px',
+    alignItems: 'center',
+  }
+}))
+export const HomeIcon = styled(PlusIcon)(({ theme }) => ({
+  marginTop: '14px',
+  [theme.breakpoints.up('lg')]: {
+    marginTop: '44px',
+    padding: '0px 24px 0px 24px'
+  },
+  [theme.breakpoints.up('lg')]: {
+    marginTop: '56px',
+   
+  }
+}))
