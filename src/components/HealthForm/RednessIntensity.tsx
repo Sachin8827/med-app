@@ -21,7 +21,7 @@ const RednessIntensity: React.FC<{ handleNext: (values: any) => void, handlePrev
     }
 
     return <>
-        <FormNavBar text='Affected area' />
+        {/* <FormNavBar text='Affected area' /> */}
         <IntensitySection>
             <Box>
                 <AffectedAreas activeStep={2} diseaseName='Redness' />

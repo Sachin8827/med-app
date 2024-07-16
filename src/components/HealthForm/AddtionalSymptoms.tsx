@@ -27,7 +27,7 @@ const AdditionalSymptoms: React.FC<{ handleNext: (values: any) => void }> = ({ h
     }
 
     return <>
-        <FormNavBar text='Intensity of your symptoms' />
+        {/* <FormNavBar text='Intensity of your symptoms' /> */}
         <AdditonalSymptomSection mt={3}>
             <Typography variant='h5'>Additional symptoms</Typography>
             <Formik

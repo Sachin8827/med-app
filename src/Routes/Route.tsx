@@ -14,6 +14,7 @@ import ResetPassword from "../Pages/ResetPassword";
 import SignUp from "../Pages/SignUp";
 import StatisticsPage from "../Pages/Statistics";
 import SummaryScreenPage from "../Pages/SummaryScreenPage";
+import HelpCenter from "../Pages/HelpCenter";
 
 const ApplicationRoutes: React.FC = () => {
 
@@ -41,6 +42,10 @@ const ApplicationRoutes: React.FC = () => {
         {
           path: '/edit',
           element: <EditProfile />
+        },
+        {
+          path : '/helpcenter',
+          element  : <HelpCenter/>
         }
       ]
     },

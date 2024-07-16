@@ -8,8 +8,9 @@ const ArrowBack: React.FC<{ handlePrevious: () => void, renderHeading: () => str
 
     return <>
         <Box display={isLargeScreen ? 'flex' : "none"} sx={{ justifyContent: 'flex-start', alignItems: 'center' }}>
+            
             <IconButton
-                sx={{ borderRadius: '50%', }}
+                sx={{ borderRadius: '50%', ":hover"  :{backgroundColor  : 'transparent'} }}
                 onClick={handlePrevious}
                 size="large"
                 aria-label="account of current user"
@@ -18,8 +19,9 @@ const ArrowBack: React.FC<{ handlePrevious: () => void, renderHeading: () => str
                 color="inherit"
             >
                 <ArrowBackIosNewRoundedIcon sx={{ color: '#A3A3A3', width: '16px' }} />
+                <Typography ml={1.5} color='primary.main'>{renderHeading()}</Typography>
             </IconButton>
-            <Typography ml={1.5} color='primary.main'>{renderHeading()}</Typography>
+            
         </Box>
     </>
 }

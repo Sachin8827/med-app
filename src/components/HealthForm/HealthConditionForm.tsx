@@ -10,6 +10,7 @@ import ScratchMarks from "./ScratchMarks";
 import SkinThickening from "./SkinThick";
 import AdditionalSymptoms from "./AddtionalSymptoms";
 import ArrowBack from "../common/ArrowBack";
+import FormNavBar from "./FormNavBar";
 
 const HealthCondtionForm: React.FC = () => {
 
@@ -81,6 +82,7 @@ const HealthCondtionForm: React.FC = () => {
 
     return <>
         <Box width="100%">
+            <FormNavBar onclick={handlePrevious} text={renderHeading()}/>
             <ArrowBack handlePrevious={handlePrevious} renderHeading={renderHeading} />
             <Container sx={{
                 maxWidth: {

@@ -19,7 +19,7 @@ const Login = () => {
             <ImageHeading heading='Hi there! Have we met before?' />
             <LoginForm />
             <LoginTextMessage>
-                <Typography variant="body2">Take me back to<Link to={'/signup'} className="anchor" color="primary" >SignUp</Link></Typography>
+                <Typography variant="body2">Take me back to<Link to={'/signup'} className="anchor" color="primary" style={{textDecoration  : 'none'}}  >&nbsp;SignUp </Link></Typography>
             </LoginTextMessage>
         </Container >
     );

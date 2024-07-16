@@ -21,7 +21,7 @@ const SkinThickening: React.FC<{ handleNext: (values: any) => void, handlePrevio
     }
 
     return <>
-        <FormNavBar text='Affected area' />
+        {/* <FormNavBar text='Affected area' /> */}
         <IntensitySection>
             <Box>
                 <AffectedAreas activeStep={6} diseaseName='Skin thickening' />

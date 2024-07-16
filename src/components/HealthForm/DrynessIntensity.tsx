@@ -20,7 +20,7 @@ const DrynessIntensity: React.FC<{ handleNext: (values: any) => void, handlePrev
         setSelected(value);
     }
     return <>
-        <FormNavBar text='Affected area' />
+        {/* <FormNavBar text='Affected area' /> */}
         <IntensitySection>
             <Box>
                 <AffectedAreas activeStep={1} diseaseName='Dryness' />

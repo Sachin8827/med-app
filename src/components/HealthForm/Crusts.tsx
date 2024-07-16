@@ -20,7 +20,7 @@ const Crusts: React.FC<{ handleNext: (values: any) => void, handlePrevious: () =
         setSelected(value);
     }
     return <>
-        <FormNavBar text='Affected area' />
+        {/* <FormNavBar text='Affected area' /> */}
         <IntensitySection>
             <Box>
                 <AffectedAreas activeStep={4} diseaseName='Crusts & Oozing' />

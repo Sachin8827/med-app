@@ -13,6 +13,7 @@ import KidBackBody from "../humanBody/kid/BackBody"
 import BabyFrontBody from "../humanBody/baby/FrontBody"
 import BabyBodyBack from "../humanBody/baby/BodyBack"
 import '../../assets/styles/styles.css'
+import { useNavigate } from "react-router-dom"
 
 const ZoneSelectionForm: React.FC<{ handleNext: (values: any) => void, parts: string[] }> = ({ handleNext, parts }) => {
 
@@ -49,7 +50,7 @@ const ZoneSelectionForm: React.FC<{ handleNext: (values: any) => void, parts: st
 	}
 
 	return <>
-		<FormNavBar text='Home' />
+		
 		<BodySection>
 			<Box>
 				<Typography variant="h5">Affected Areas</Typography>
@@ -60,7 +61,7 @@ const ZoneSelectionForm: React.FC<{ handleNext: (values: any) => void, parts: st
 				validationSchema={currentValidationStep}
 				onSubmit={handleNext}
 			>
-				{({ setFieldValue, errors, touched }) => (
+				{({ setFieldValue, errors, touched, values }) => (
 					< Form >
 						<BodySectionForm >
 							<img style={{ display: isLandscape ? 'none' : 'block' }} src={rotateIcon} onClick={handleClick} />
@@ -71,7 +72,7 @@ const ZoneSelectionForm: React.FC<{ handleNext: (values: any) => void, parts: st
 								{RenderBody('back', setFieldValue)}
 							</SvgBox>
 							<NextButtonDiv>
-								<SubmitButton variant='contained' type='submit'>Next</SubmitButton>
+								<SubmitButton disabled={values.bodyParts.length==0} variant='contained' type='submit'>Next</SubmitButton>
 							</NextButtonDiv>
 						</BodySectionForm>
 						{errors.bodyParts && touched.bodyParts ? <ErrorMsg variant='body2' color='error'>{errors.bodyParts}</ErrorMsg> : ""}

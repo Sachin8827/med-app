@@ -1,5 +1,5 @@
 import HighlightOff from "@mui/icons-material/HighlightOff";
-import { Alert, Button, CircularProgress, Drawer, FormControl, FormControlLabel, ImageList, ImageListItem, InputLabel, MobileStepper, OutlinedInput, RadioGroup, Rating, Slider, styled, TextField, Toolbar, Typography } from "@mui/material";
+import { Accordion, Alert, Button, CircularProgress, Drawer, FormControl, FormControlLabel, ImageList, ImageListItem, InputLabel, MobileStepper, OutlinedInput, RadioGroup, Rating, Slider, styled, TextField, Toolbar, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import { CustomRadioButtonProps, ErrorObject, InfectionIntensity, SkinToneBoxProps, UserProfileProps } from "../../Types/Types";
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
@@ -657,8 +657,8 @@ export const AdditonalSymptomSection = styled(Box)(({ theme }) => ({
   }
 }))
 export const IntensityRange = styled(Box)(({ theme }) => ({
-  width: "24px",
-  height: '24px',
+  width: "20px",
+  height: '20px',
   position: 'absolute',
   top: "7px",
   right: '7px',
@@ -961,4 +961,17 @@ export const UserProfileDiv = styled(Box)<UserProfileProps>(({ isSelected, theme
   borderRadius: '12px',
   border: isSelected ? '1px solid #B3D06A' : '1px solid transparent',
   backgroundColor: isSelected ? '#E2F2C8' : "#F0F1F4"
+}))
+export const CustomAccrodion = styled(Accordion)(({theme}) =>({
+border  : '1px solid red',
+borderRadius : '12px',
+":last-of-type" : {
+  borderBottomLeftRadius : "12px",
+  borderBottomRightRadius : "12px"
+},
+":first-of-type"  :{
+  borderTopLeftRadius : "12px",
+  borderTopRightRadius : "12px"   
+},
+
 }))

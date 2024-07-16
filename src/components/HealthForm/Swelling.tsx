@@ -21,7 +21,7 @@ const Swelling: React.FC<{ handleNext: (values: any) => void, handlePrevious: ()
     }
 
     return <>
-        <FormNavBar text='Affected area' />
+        {/* <FormNavBar text='Affected area' /> */}
         <IntensitySection>
             <Box>
                 <AffectedAreas activeStep={3} diseaseName='Swelling' />
