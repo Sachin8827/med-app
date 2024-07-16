@@ -11,9 +11,9 @@ const ForgotPassword: React.FC = () => {
                 xs: "100%",
                 sm: '402px',
                 lg: "508px"
-            }
+            }, mt: 3
         }}>
-            <FlexBox>
+            <FlexBox mt={2}>
                 <ImageHeading heading="Reset password" text="Type the email you used to sign up and we'll send you a password reset email" />
                 <SendEmailForm />
             </FlexBox>

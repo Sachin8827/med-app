@@ -35,6 +35,7 @@ const FormNavBar: React.FC<{ text: string, onclick: () => void }> = ({ text, onc
                     {auth && (
                         <div>
                             <IconButton
+                                sx={{ mr: 0 }}
                                 size="large"
                                 edge="end"
                                 color="default"

@@ -104,3 +104,9 @@ export interface SymptomsData {
   export interface UserProfileProps extends BoxProps{
     isSelected : boolean
   }
+  export interface UserProfileCardProps {
+    name  :string,
+    onclick : () =>void,
+    caption : string,
+    isActive : boolean
+}

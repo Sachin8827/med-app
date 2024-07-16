@@ -14,6 +14,7 @@ const AdditionalSymptoms: React.FC<{ handleNext: (values: any) => void }> = ({ h
     const [sleepState, setSleepState] = useState(0);
     const [itchingState, setItchingState] = useState(0);
     const [isFormValid, setFormValid] = useState(false);
+    const sx = { mt: 1, height: "48px", borderRadius: '12px' }
     const validationStep = ValdationHealth[7]
 
     const validate = (values: any) => {
@@ -37,33 +38,34 @@ const AdditionalSymptoms: React.FC<{ handleNext: (values: any) => void }> = ({ h
                     itchingState: itchingState,
                     additionalSymptoms: ''
                 }}
-                validationSchema={validationStep}
+                // validationSchema={validationStep}
                 onSubmit={handleNext}
-                validate={validate}
+            // validate={validate}
             >
                 {({ setFieldValue, isValid }) => (
                     <Form >
                         <Box sx={{ display: 'flex', flexDirection: 'column', rowGap: '8px' }}>
-                            <Typography mt={2} variant="subtitle1" sx={{ fontWeight: 600 }}>Assess your psychological state</Typography>
-                            <MyformControl sx={{ height: "48px", borderRadius: '12px', }}>
+                            <Typography mt={2} variant="body2" fontWeight={600} color="common.black" >Assess your psychological state</Typography>
+                            <MyformControl sx={sx}>
                                 <RatingDisease setFieldValue={setFieldValue} value={psychologicalState} setValue={setPsychologicalState} name="psychologicalState" />
                             </MyformControl>
                             <DisplayHealthStatus goodHealth="I feel great" badHealth="I feel depressed" />
-                            <Typography mt={2} variant="subtitle1" sx={{ fontWeight: 600 }}>Evaluate the state of your sleep</Typography>
-                            <MyformControl sx={{ mt: 1, height: "48px", borderRadius: '12px', }}>
+                            <Typography mt={2} variant="body2" fontWeight={600} color="common.black"  >Evaluate the state of your sleep</Typography>
+                            <MyformControl sx={sx}>
                                 <RatingDisease setFieldValue={setFieldValue} value={sleepState} setValue={setSleepState} name="sleepState" />
                             </MyformControl>
                             <DisplayHealthStatus goodHealth="I sleep well" badHealth="I sleep very uneasy" />
-                            <Typography mt={2} variant="subtitle1" sx={{ fontWeight: 600 }}>Evaluate the state of your sleep</Typography>
-                            <MyformControl sx={{ mt: 1, height: "48px", borderRadius: '12px', }}>
+                            <Typography mt={2} variant="body2" fontWeight={600} color="common.black" >Evaluate the state of your sleep</Typography>
+                            <MyformControl sx={sx}>
                                 <RatingDisease setFieldValue={setFieldValue} value={itchingState} setValue={setItchingState} name="itchingState" />
                             </MyformControl>
                             <DisplayHealthStatus goodHealth="No itching" badHealth="Unbearable itching" />
-                            <Typography mt={3} variant="subtitle1" sx={{ fontWeight: 600 }}>Describe additional symptoms that you think are important, if you have them</Typography>
+                            <Typography mt={3} variant="body2" fontWeight={600} color="common.black" >Describe additional symptoms that you think are important, if you have them</Typography>
                             <MyformControl sx={{ mt: 1, borderRadius: '12px', }}>
                                 <MultilineInput onChange={(e) => setFieldValue('additionalSymptoms', e.target.value)} name="additionalSymptoms" multiline rows={3} placeholder='Drowsiness, dizziness, etc.' />
                             </MyformControl>
-                            <SubmitButton variant="contained" fullWidth type='submit' disabled={!isValid || !isFormValid} >Calculate</SubmitButton>
+                            <SubmitButton variant="contained" fullWidth type='submit'  >Calculate</SubmitButton>
+                            {/* disabled={!isValid || !isFormValid} */}
                         </Box>
                     </Form>
                 )}

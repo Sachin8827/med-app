@@ -14,7 +14,7 @@ export const NavList = ({ setDrawer }: { setDrawer: (status: boolean) => void })
     return <>
         <Nav role="presentation">
             <LogoWrapper >
-                <ImageList > <img src={logo} alt="Logo" /></ImageList>
+                <ImageList > <img width={"100%"} height={'100%'} src={logo} alt="Logo" /></ImageList>
                 {!isLargeScreen && <CloseIcon onClick={() => setDrawer(false)} />}
             </LogoWrapper>
             <NavButtonDiv >

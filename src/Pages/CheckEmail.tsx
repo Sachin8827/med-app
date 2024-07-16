@@ -18,7 +18,7 @@ const CheckEmail: React.FC = () => {
         }}>
             <FlexBox>
                 <ImageHeading heading="Check your email" />
-                <Typography variant="body2" >We'll send an email <Typography color='primary' display={'inline'} margin='0 5px'>{params.email}</Typography>if it's associated with your account.</Typography>
+                <Typography variant="body2" >We'll send an email<Typography color='primary' display={'inline'} margin='0 5px'>{params.email}</Typography>if it's associated with your account.</Typography>
                 <Typography variant="body2" sx={{ mt: 3 }} > Bear in mind it will be valid for {"<24 hours>"} only</Typography>
                 <Link to={'/reset'}>Reset</Link>
                 <LoginTextMessage>

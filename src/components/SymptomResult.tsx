@@ -11,7 +11,7 @@ const SymptomsResult: React.FC<{ symptoms: SymptomsData }> = ({ symptoms }) => {
     return <>
         <SymptomsWrapper>
             <Box mt={4} width='100%'>
-                <Typography variant="h6">Symptom intensity</Typography>
+                <Typography variant="heading1">Symptom intensity</Typography>
                 <SymptomsCardWrapper mt={2} >
                     <SymptomsCard heading="Dryness" intensity={drynessIntensity} />
                     <SymptomsCard heading="Redness" intensity={rednessIntensity} />
@@ -22,7 +22,7 @@ const SymptomsResult: React.FC<{ symptoms: SymptomsData }> = ({ symptoms }) => {
                 </SymptomsCardWrapper>
             </Box>
             <Box mt={4} width='100%'>
-                <Typography variant="h6">Additional symptoms</Typography>
+                <Typography variant="heading1">Additional symptoms</Typography>
                 <SymptomsCardWrapper mt={2} >
                     <AdditionalSymptomsCard heading="Psychological state" intensity={`${psychologicalState} of 10`} />
                     <AdditionalSymptomsCard heading="Sleep" intensity={`${sleepState} of 10`} />

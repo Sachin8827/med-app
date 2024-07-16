@@ -21,7 +21,7 @@ const ZoneSelectionForm: React.FC<{ handleNext: (values: any) => void, parts: st
 	const currentValidationStep = ValdationHealth[0];
 	const [isFront, setFront] = useState(true);
 	const isLandscape = useMediaQuery('(orientation: landscape)');
-	const age = 25
+	const age = 12
 
 	const handleBodyParts = (partName: string, setFieldValue: (name: string, value: string[]) => void) => {
 		const newBodyParts = bodyParts.includes(partName) ? bodyParts.filter(part => part != partName) : [...bodyParts, partName]
@@ -50,7 +50,7 @@ const ZoneSelectionForm: React.FC<{ handleNext: (values: any) => void, parts: st
 	}
 
 	return <>
-		
+
 		<BodySection>
 			<Box>
 				<Typography variant="h5">Affected Areas</Typography>
@@ -63,7 +63,7 @@ const ZoneSelectionForm: React.FC<{ handleNext: (values: any) => void, parts: st
 			>
 				{({ setFieldValue, errors, touched, values }) => (
 					< Form >
-						<BodySectionForm >
+						<BodySectionForm mt={4} >
 							<img style={{ display: isLandscape ? 'none' : 'block' }} src={rotateIcon} onClick={handleClick} />
 							<SvgBox sx={{ display: isLandscape ? "block" : isFront ? 'block' : 'none' }}>
 								{RenderBody('front', setFieldValue)}
@@ -72,7 +72,7 @@ const ZoneSelectionForm: React.FC<{ handleNext: (values: any) => void, parts: st
 								{RenderBody('back', setFieldValue)}
 							</SvgBox>
 							<NextButtonDiv>
-								<SubmitButton disabled={values.bodyParts.length==0} variant='contained' type='submit'>Next</SubmitButton>
+								<SubmitButton disabled={values.bodyParts.length == 0} variant='contained' type='submit'>Next</SubmitButton>
 							</NextButtonDiv>
 						</BodySectionForm>
 						{errors.bodyParts && touched.bodyParts ? <ErrorMsg variant='body2' color='error'>{errors.bodyParts}</ErrorMsg> : ""}

@@ -1,9 +1,10 @@
-import { AppBar, Box, IconButton, Toolbar, Typography, useMediaQuery, useTheme } from "@mui/material";
+import { Box, IconButton, Toolbar, Typography, useMediaQuery, useTheme } from "@mui/material";
 import userIcon from '../../../public/images/user.svg'
 import { useState } from "react";
 import MenuIcon from '@mui/icons-material/Menu';
-import { CustomDrawer, CustomToolBar } from "../../assets/styles/styled";
+import { CustomAppBar, CustomDrawer, CustomToolBar } from "../../assets/styles/styled";
 import { NavList } from "./NavList";
+import { Link } from "react-router-dom";
 
 const Navbar: React.FC = () => {
     const [auth, setAuth] = useState(true);
@@ -17,7 +18,7 @@ const Navbar: React.FC = () => {
 
     return <>
         <Box sx={{ flexGrow: 1, display: isLargeScreen ? 'none' : 'block' }} >
-            <AppBar position="static" sx={{ backgroundColor: "white", boxShadow: 'none' }}>
+            <CustomAppBar position="static">
                 <CustomToolBar>
                     <IconButton
                         size="large"
@@ -26,7 +27,7 @@ const Navbar: React.FC = () => {
                         aria-haspopup="true"
                         color="inherit"
                     >
-                        <img src={userIcon} />
+                        <Link to='/account' style={{ display: 'flex' }}><img src={userIcon} /></Link>
                     </IconButton>
                     <Typography variant="subtitle1" color={'black'} component="div" sx={{ flexGrow: 1 }}>
                         John Doe
@@ -51,7 +52,7 @@ const Navbar: React.FC = () => {
                         </div>
                     )}
                 </CustomToolBar>
-            </AppBar>
+            </CustomAppBar>
         </Box>
     </>
 }

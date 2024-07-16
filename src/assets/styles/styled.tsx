@@ -1,5 +1,5 @@
 import HighlightOff from "@mui/icons-material/HighlightOff";
-import { Accordion, Alert, Button, CircularProgress, Drawer, FormControl, FormControlLabel, ImageList, ImageListItem, InputLabel, MobileStepper, OutlinedInput, RadioGroup, Rating, Slider, styled, TextField, Toolbar, Typography } from "@mui/material";
+import { Accordion, Alert, AppBar, Button, Checkbox, CircularProgress, Drawer, FormControl, FormControlLabel, ImageList, ImageListItem, InputLabel, MobileStepper, OutlinedInput, RadioGroup, Rating, Slider, styled, TextField, Toolbar, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import { CustomRadioButtonProps, ErrorObject, InfectionIntensity, SkinToneBoxProps, UserProfileProps } from "../../Types/Types";
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
@@ -91,7 +91,11 @@ export const PasswordField = styled(OutlinedInput)<ErrorObject>(({ theme, error 
   },
 
 }));
-
+export const CustomCheckbox = styled(Checkbox)(({ theme }) => ({
+  '.MuiSvgIcon-root': {
+    fill: '#87C81A'
+  }
+}))
 export const SubmitButton = styled(Button)(({ theme }) => ({
   marginTop: '1.5rem',
   height: '43px',
@@ -211,7 +215,7 @@ export const MyRadioButton = styled(FormControlLabel)(({ theme }) => ({
 export const CustomRadioButton = styled((props: CustomRadioButtonProps) => <FormControlLabel {...props} />)(
   ({ theme, isError, isSelected }) => ({
     height: "46px",
-    width: "27%",
+    width: "32%",
     borderRadius: '12px',
     display: 'flex',
     justifyContent: 'center',
@@ -310,21 +314,33 @@ export const CustomDrawer = styled(Drawer)(({ theme }) => ({
 }))
 export const NavButtonDiv = styled(Box)(({ theme }) => ({
   [theme.breakpoints.up('lg')]: {
-    width: "192px",
+    width: '100%',
+    padding: '16px',
+
     display: 'flex',
     flexDirection: 'column',
     margin: '0 auto',
+    // marginTop: '16px'
+  },
+  [theme.breakpoints.up('xl')]: {
+
+
   }
 }))
 export const ButtonSection = styled(Box)(({ theme }) => ({
   height: '-webkit-fill-available',
   display: 'flex',
+  width: '100%',
   justifyContent: "center",
   alignItems: 'end',
   [theme.breakpoints.up('lg')]: {
-    width: "192px",
+
     margin: '0 auto',
-    paddingBottom: '16px'
+    paddingBottom: '16px',
+    padding: '16px'
+  },
+  [theme.breakpoints.up('xl')]: {
+
   }
 }))
 export const NavButton = styled(Button)(({ theme }) => ({
@@ -343,11 +359,11 @@ export const NavButton = styled(Button)(({ theme }) => ({
   },
   backgroundColor: 'white',
   '.MuiButton-root:hover': {
-
+    backgroundColor: 'transparent',
   },
   [theme.breakpoints.up('lg')]: {
     justifyContent: 'start',
-    width: "97%"
+    padding: '12px 16px 12px 16px'
   }
 }))
 export const HomePageWrapper = styled(Box)(({ theme }) => ({
@@ -361,12 +377,12 @@ export const HomePageWrapper = styled(Box)(({ theme }) => ({
   [theme.breakpoints.up('lg')]: {
     flexDirection: "column",
     width: "100%",
-    margin: '0 auto'
+    margin: '0 auto',
+    marginTop: '32px'
   },
-  '@media (orientation: landscape)': {
-
+  [theme.breakpoints.up('xl')]: {
+    marginTop: '48px'
   }
-
 }))
 export const HeroImage = styled(Box)(({ theme }) => ({
   width: '100%',
@@ -377,9 +393,7 @@ export const HeroImage = styled(Box)(({ theme }) => ({
   },
   [theme.breakpoints.up('lg')]: {
     width: "100%",
-
   }
-
 }))
 export const ImageSection = styled(Box)(({ theme }) => ({
 
@@ -453,6 +467,9 @@ export const HomePageCardWrapper = styled(Box)(({ theme }) => ({
   [theme.breakpoints.up('sm')]: {
     width: "100%",
   },
+  [theme.breakpoints.up('lg')]: {
+    padding: '24px 40px 24px 40px'
+  },
   '@media(min-width: 1920px)': {
     padding: '40px 56px 40px 56px'
   },
@@ -475,6 +492,7 @@ export const PlusIcon = styled(SubmitButton)(({ theme }) => ({
       width: "auto",
       display: 'block',
       justifyContent: 'start',
+      marginLeft: '5px'
     }
   },
   [theme.breakpoints.up('lg')]: {
@@ -560,7 +578,7 @@ export const NextButtonDiv = styled(Box)(({ theme }) => ({
 
 }))
 export const SvgBox = styled(Box)(({ theme }) => ({
-  aspectRatio: '0.47',
+  // aspectRatio: '0.47',
   height: "100%",
   '@media (orientation: landscape)': {
     width: '34%'
@@ -709,6 +727,13 @@ export const LogoWrapper = styled(Box)(({ theme }) => ({
   alignItems: 'center',
   [theme.breakpoints.up('lg')]: {
     padding: "32px  32px  12px  32px"
+  },
+  [theme.breakpoints.up('xl')]: {
+    '.MuiImageList-root': {
+      width: "40px",
+      height: '40px',
+      gridTemplateColumns: "none !important"
+    }
   }
 }))
 
@@ -810,12 +835,12 @@ export const ProgressBarWrapper = styled(Box)(({ theme }) => ({
   [theme.breakpoints.up('lg')]: {
     justifyContent: 'flex-start',
     rowGap: '20px',
-    width: '160px'
+    width: '30%',
   },
   [theme.breakpoints.up('xl')]: {
-    width: '184px',
-    height: '184px'
+    paddingBottom: '60px'
   }
+
 }))
 export const Progress = styled(CircularProgress)(() => ({
   color: 'green ',
@@ -838,6 +863,9 @@ export const CustomProgressBar = styled(CircularProgressbar)(({ theme }) => ({
   },
   [theme.breakpoints.up('lg')]: {
     width: '160px'
+  },
+  [theme.breakpoints.up('xl')]: {
+    width: '184px'
   }
 }))
 export const HomeProgressBar = styled(CircularProgressbar)(({ theme }) => ({
@@ -921,7 +949,7 @@ export const TestScoreWrapper = styled(Box)(({ theme }) => ({
     },
     [theme.breakpoints.up('xl')]: {
       width: '184px',
-      height: '184px'
+      height: '184px',
     }
   },
 
@@ -935,9 +963,10 @@ export const HomeIcon = styled(PlusIcon)(({ theme }) => ({
   marginTop: '14px',
   [theme.breakpoints.up('lg')]: {
     marginTop: '44px',
+    // width: '234px',
     padding: '0px 24px 0px 24px'
   },
-  [theme.breakpoints.up('lg')]: {
+  [theme.breakpoints.up('xl')]: {
     marginTop: '56px',
 
   }
@@ -952,7 +981,10 @@ export const BodyDiv = styled(Box)(({ theme }) => ({
     width: '132px'
   },
   [theme.breakpoints.up('lg')]: {
-    width: '147xpx'
+    width: '147px'
+  },
+  [theme.breakpoints.up('xl')]: {
+    width: '147px'
   }
 
 }))
@@ -962,16 +994,36 @@ export const UserProfileDiv = styled(Box)<UserProfileProps>(({ isSelected, theme
   border: isSelected ? '1px solid #B3D06A' : '1px solid transparent',
   backgroundColor: isSelected ? '#E2F2C8' : "#F0F1F4"
 }))
-export const CustomAccrodion = styled(Accordion)(({theme}) =>({
-border  : '1px solid red',
-borderRadius : '12px',
-":last-of-type" : {
-  borderBottomLeftRadius : "12px",
-  borderBottomRightRadius : "12px"
-},
-":first-of-type"  :{
-  borderTopLeftRadius : "12px",
-  borderTopRightRadius : "12px"   
-},
+export const CustomAccrodion = styled(Accordion)(({ theme }) => ({
+  boxShadow: 'none',
+  borderRadius: '12px',
+  // border: '1px solid red',
+  '.css-eqpfi5-MuiAccordionSummary-content.Mui-expanded': {
+    margin: 0,
+  },
+  '.css-15v22id-MuiAccordionDetails-root': {
+    padding: '0px 16px 16px'
+  },
+  ":last-of-type": {
+    borderBottomLeftRadius: "12px",
+    borderBottomRightRadius: "12px"
+  },
+  ":first-of-type": {
+    marginTop: '16px !important',
+    borderTopLeftRadius: "12px",
+    borderTopRightRadius: "12px"
+  },
+  '::before': {
+    backgroundColor: 'transparent'
+  }
 
+}))
+export const CustomAppBar = styled(AppBar)(() => ({
+  backgroundColor: "white",
+  boxShadow: 'none',
+  paddingLeft: '16px',
+  paddingRight: '16px',
+  [theme.breakpoints.up('sm')]: {
+    padding: 0
+  }
 }))

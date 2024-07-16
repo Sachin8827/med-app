@@ -82,7 +82,7 @@ const HealthCondtionForm: React.FC = () => {
 
     return <>
         <Box width="100%">
-            <FormNavBar onclick={handlePrevious} text={renderHeading()}/>
+            <FormNavBar onclick={handlePrevious} text={renderHeading()} />
             <ArrowBack handlePrevious={handlePrevious} renderHeading={renderHeading} />
             <Container sx={{
                 maxWidth: {

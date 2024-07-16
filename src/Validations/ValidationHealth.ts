@@ -27,7 +27,6 @@ export const ValdationHealth = [
         psychologicalState: Yup.number().min(1, 'Required'),
         sleepState: Yup.number().min(1, 'Required'),
         itchingState: Yup.number().min(1, 'Required'),
-        additionalSymptoms: Yup.string().required("Required"),
       })
 ]
 

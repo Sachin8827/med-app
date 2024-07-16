@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { Checkbox, FormControlLabel, FormGroup, Typography } from "@mui/material"
-import { Field, Form, Formik } from "formik"
-import { SignpuFlexBox, SubmitButton } from "../../assets/styles/styled";
+import { FormControlLabel, FormGroup, Typography } from "@mui/material"
+import { Form, Formik } from "formik"
+import { CustomCheckbox, SignpuFlexBox, SubmitButton } from "../../assets/styles/styled";
 import { validationSchema } from "../../Validations/SchemaValidations";
 import ImageHeading from "../common/ImageHeading"
 
@@ -11,6 +11,7 @@ const Agreement: React.FC<{ isChecked: boolean, handleSubmit: any, handlePreviou
 
     const handleChange = (setFieldValue: (key: string, value: boolean) => void) => {
         setChecked(!checked)
+        console.log('asdf')
         setFieldValue('isChecked', checked)
     }
 
@@ -20,7 +21,7 @@ const Agreement: React.FC<{ isChecked: boolean, handleSubmit: any, handlePreviou
             validationSchema={currentValidationStep}
             onSubmit={handleSubmit}
         >
-            {({ setFieldValue }) => (
+            {({ setFieldValue, values }) => (
                 <Form>
                     <ImageHeading heading="Research Consent" />
                     <Typography mt={2} variant='h6'>Contribute to knowledge</Typography>
@@ -28,21 +29,15 @@ const Agreement: React.FC<{ isChecked: boolean, handleSubmit: any, handlePreviou
                     <FormGroup>
                         <FormControlLabel
                             control={
-                                <Field
-                                    as={Checkbox}
-                                    color="success"
-                                    name="isChecked"
-                                    checked={checked}
-                                    onClick={() => handleChange(setFieldValue)}
-                                />
+                                <CustomCheckbox name="isChecked" checked={values.isChecked} onClick={() => handleChange(setFieldValue)} />
                             }
                             label={<Typography><strong>I grant Integrative Health Courses permission to share my de-identified data for research or commercial activities</strong></Typography>}
                         />
                         <Typography mt={1.5} variant="body1">We assure you that no identifying data such as name or email will ever be shared as we are committed to protecting your privacy. By allowing us to use your data for research, you can assist us on our mission to improve the lives of eczema sufferers</Typography>
                     </FormGroup>
                     <SignpuFlexBox sx={{ justifyContent: 'space-between' }}>
-                        <SubmitButton type='submit' variant="contained">
-                            Continue
+                        <SubmitButton type='submit' variant="contained" disabled={!values.isChecked}>
+                            Finalize registration
                         </SubmitButton>
                         <SubmitButton variant="outlined" onClick={handlePrevious}>
                             Previous

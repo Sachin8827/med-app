@@ -9,7 +9,7 @@ const ImageHeading: React.FC<{ heading: string, text?: string }> = ({ heading, t
             <ImageList >
                 <img src={logo} alt="Logo" />
             </ImageList>
-            <Typography variant="h5" component="h5" >
+            <Typography mt={1} variant="h5" component="h5" >
                 {heading}
             </Typography>
             {text && <Typography variant='body2' >{text}</Typography>}

@@ -29,7 +29,7 @@ const SendEmailForm: React.FC = () => {
         >
             {(({ }) => (
                 <Form>
-                    <MyformControl >
+                    <MyformControl sx={{ mt: 2 }} >
                         <Label shrink className='labelDesign' >Email</Label>
                         <InputField name='email' className='email' label='' id='email' emailfound={emailFound} />
                     </MyformControl>

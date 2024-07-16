@@ -31,7 +31,7 @@ const HomeScoreSection: React.FC = () => {
                     <Typography fontSize={14} variant='body1' color={'white'}>January 30, 2024</Typography>
                 </Box>
             </TestScoreWrapper>
-            <HomeIcon variant='outlined' onClick={() => { navigate('/healthtest') }}   > <AddIcon fontSize="small" /><Typography variant="button" className="test">Take test</Typography>  </HomeIcon>
+            <HomeIcon variant='outlined' onClick={() => { navigate('/healthtest') }}><AddIcon fontSize="medium" /><Typography variant="button" fontSize={'18px'} className="test">Take the new test</Typography></HomeIcon>
         </HomeScoreWrapper>
     </>
 }

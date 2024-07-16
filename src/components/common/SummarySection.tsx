@@ -66,7 +66,7 @@ const SummarySection: React.FC<{ bodyParts: string[] }> = ({ bodyParts }) => {
                         />
                     </div>
                     <Box>
-                        <Typography variant="h4" color={'white'}>PO-SCORAD</Typography>
+                        <Typography variant="h5" color={'white'}>PO-SCORAD</Typography>
                         <Typography variant='body2' color={'white'}>January 30, 2024</Typography>
                     </Box>
                     <img style={{ display: isLandscape ? 'none' : 'block', width: '48px' }} src={rotateIcon} onClick={handleClick} />
