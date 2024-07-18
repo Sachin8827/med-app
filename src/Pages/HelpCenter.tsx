@@ -1,4 +1,4 @@
-import { Box, Container, Typography } from "@mui/material"
+import { Box, Container, Typography, useMediaQuery } from "@mui/material"
 import { useNavigate } from "react-router-dom";
 import Accordion from "../components/common/Accordion"
 import ArrowBack from "../components/common/ArrowBack";
@@ -6,6 +6,7 @@ import FormNavBar from "../components/HealthForm/FormNavBar"
 
 const HelpCenter = () => {
     const navigate = useNavigate();
+    const mt = useMediaQuery('(min-width:1280px)') ? 4 : 3;
 
     return <>
         <Box width={'-webkit-fill-available'} sx={{ backgroundColor: '#F0F1F4', pb: 3 }}>
@@ -23,7 +24,7 @@ const HelpCenter = () => {
                     <Typography variant="h1">Help center</Typography>
                     <Typography mt={1} variant="body2">Find the answers to your questions in the help center</Typography>
                 </Box>
-                <Box mt={3} >
+                <Box mt={mt} >
                     <Typography variant="h6">Answers to questions</Typography>
                     <Box display={"flex"} sx={{ flexDirection: 'column', rowGap: '8px' }}>
                         <Accordion heading="How do I know it's atopic dermatitis?" text="Atopic dermatitis (or neurodermatitis) is one of the most common skin diseases. It is an inflammatory skin lesion of an allergic nature, which is caused by many different factors - allergens that enter the body with food, by contact (skin contact) or by inhalation" />
@@ -32,7 +33,7 @@ const HelpCenter = () => {
                         <Accordion heading="How do I know it's atopic dermatitis?" text="Atopic dermatitis (or neurodermatitis) is one of the most common skin diseases. It is an inflammatory skin lesion of an allergic nature, which is caused by many different factors - allergens that enter the body with food, by contact (skin contact) or by inhalation" />
                     </Box>
                 </Box>
-                <Box mt={3} >
+                <Box mt={mt} >
                     <Typography variant="h6">Guidance</Typography>
                     <Box display={"flex"} sx={{ flexDirection: 'column', rowGap: '8px' }}>
                         <Accordion heading="How to use the service" text="Atopic dermatitis (or neurodermatitis) is one of the most common skin diseases. It is an inflammatory skin lesion of an allergic nature, which is caused by many different factors - allergens that enter the body with food, by contact (skin contact) or by inhalation" />

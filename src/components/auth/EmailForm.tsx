@@ -11,7 +11,7 @@ import ImageHeading from "../common/ImageHeading"
 const EmailForm: React.FC<EmailFormProps> = ({ email, password, handleNext }) => {
 
     const [showPassword, setShowPassword] = useState(true);
-    const handleClickShowPassword = () => setShowPassword((show: Boolean) => !show);
+    const handleClickShowPassword = () => setShowPassword((show: boolean) => !show);
     const currentValidationStep = validationSchema[0];
 
     const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -20,7 +20,7 @@ const EmailForm: React.FC<EmailFormProps> = ({ email, password, handleNext }) =>
 
     return <>
         <ImageHeading heading="Sign up" />
-        <Typography variant="body2">Through an individual invitation</Typography>
+        <Typography variant="body2" mt={1}>Through an individual invitation</Typography>
         <Formik
             initialValues={{ email, password }}
             validationSchema={currentValidationStep}

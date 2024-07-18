@@ -1,4 +1,4 @@
-import { Box, Container, Typography, useMediaQuery, useTheme } from "@mui/material"
+import { Box, Typography, useMediaQuery, useTheme } from "@mui/material"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { SubmitButton } from "../assets/styles/styled"

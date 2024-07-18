@@ -313,6 +313,7 @@ export const CustomDrawer = styled(Drawer)(({ theme }) => ({
 
 }))
 export const NavButtonDiv = styled(Box)(({ theme }) => ({
+  marginTop: '16px',
   [theme.breakpoints.up('lg')]: {
     width: '100%',
     padding: '16px',

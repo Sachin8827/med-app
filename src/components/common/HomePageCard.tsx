@@ -8,7 +8,7 @@ const HomePageCard: React.FC<HomePageCardProps> = ({ heading, content, onclick }
     return <>
         <HomePageCardWrapper py={3.2} px={2.5} onClick={onclick} >
             <Typography variant="h3">{heading}</Typography>
-            <Typography mt={0.5} variant="body2">{content}</Typography>
+            <Typography mt={1} variant="p3" component='p'>{content}</Typography>
         </HomePageCardWrapper>
     </>
 }

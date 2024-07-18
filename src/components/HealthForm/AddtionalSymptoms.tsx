@@ -6,9 +6,8 @@ import { SubmitButton } from "../../assets/styles/styled";
 import { ValdationHealth } from "../../Validations/ValidationHealth";
 import DisplayHealthStatus from "./common-components/DisplayHealthStatus";
 import RatingDisease from "./common-components/Rating";
-import FormNavBar from "./FormNavBar";
 
-const AdditionalSymptoms: React.FC<{ handleNext: (values: any) => void }> = ({ handleNext }) => {
+const AdditionalSymptoms: React.FC<{ handleNext: () => void }> = ({ handleNext }) => {
 
     const [psychologicalState, setPsychologicalState] = useState(0);
     const [sleepState, setSleepState] = useState(0);
@@ -17,8 +16,8 @@ const AdditionalSymptoms: React.FC<{ handleNext: (values: any) => void }> = ({ h
     const sx = { mt: 1, height: "48px", borderRadius: '12px' }
     const validationStep = ValdationHealth[7]
 
-    const validate = (values: any) => {
-        const errors: any = {};
+    const validate = (values: { psychologicalState: number, sleepState: number, itchingState: number }) => {
+        const errors = {};
         if (!values.psychologicalState || !values.sleepState || !values.itchingState) {
             setFormValid(false);
         } else {
@@ -28,7 +27,6 @@ const AdditionalSymptoms: React.FC<{ handleNext: (values: any) => void }> = ({ h
     }
 
     return <>
-        {/* <FormNavBar text='Intensity of your symptoms' /> */}
         <AdditonalSymptomSection mt={3}>
             <Typography variant='h5'>Additional symptoms</Typography>
             <Formik
@@ -42,7 +40,7 @@ const AdditionalSymptoms: React.FC<{ handleNext: (values: any) => void }> = ({ h
                 onSubmit={handleNext}
             // validate={validate}
             >
-                {({ setFieldValue, isValid }) => (
+                {({ setFieldValue }) => (
                     <Form >
                         <Box sx={{ display: 'flex', flexDirection: 'column', rowGap: '8px' }}>
                             <Typography mt={2} variant="body2" fontWeight={600} color="common.black" >Assess your psychological state</Typography>

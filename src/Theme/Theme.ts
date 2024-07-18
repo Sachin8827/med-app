@@ -41,6 +41,7 @@ export const theme = createTheme({
       fontSize: '18px',
       lineHeight: '26px',
       fontWeight: '600',
+      color: '#2F2F32',
       "@media (min-width:1200px)": {
         fontSize: '22px',
         lineHeight: '30px'
@@ -49,7 +50,8 @@ export const theme = createTheme({
     h4: {
       fontSize: "24px",
       fontWeight: 600,
-      lineHeight: '32px'
+      lineHeight: '32px',
+      color: '#2F2F32',
     },
     h5: {
       lineHeight: '32px',
@@ -68,6 +70,7 @@ export const theme = createTheme({
       fontSize: "18px",
       lineHeight: '26px',
       fontWeight: 600,
+      color: '#2F2F32',
       [`@media (min-width:1200px)`]: {
         fontSize: '22px',
         lineHeight: '30px'
@@ -87,6 +90,7 @@ export const theme = createTheme({
       fontWeight: 600,
       lineHeight: '26px',
       fontSize: '18px',
+      color: '#2F2F32',
       [`@media (min-width:1536px)`]: {
         fontSize: '24px',
         lineHeight: '32px'
@@ -106,6 +110,7 @@ export const theme = createTheme({
       fontSize: '24px',
       fontWeight: 600,
       lineHeight: "32px",
+      color: '#2F2F32',
       [`@media (min-width:1200px)`]: {
         fontSize: '28px',
         lineHeight: '36px'
@@ -115,6 +120,7 @@ export const theme = createTheme({
       fontSize: '16px',
       lineHeight: '24px',
       fontWeight: 500,
+      color: '#2F2F32',
       ['@media (min-width: 1200px)']: {
         fontSize: '18px',
         lineHeight: '26px',
@@ -130,10 +136,21 @@ export const theme = createTheme({
         lineHeight: '26px'
       }
     },
+    p3: {
+      fontSize: '16px',
+      fontWeight: 400,
+      lineHeight: '22px',
+      color: '#707070',
+      [`@media (min-width:1536px)`]: {
+        fontSize: '18px',
+        lineHeight: '24px'
+      }
+    },
     heading1: {
       fontSize: '20px',
       lineHeight: '28px',
       fontWeight: 600,
+      color: '#2F2F32',
       [`@media (min-width:1200px)`]: {
         fontSize: '24px',
         lineHeight: '32px'

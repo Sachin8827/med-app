@@ -21,13 +21,15 @@ declare module '@mui/material/styles' {
         plight: React.CSSProperties
         heading1: React.CSSProperties
         heading2: React.CSSProperties
+        p3: React.CSSProperties
     }
 
     interface TypographyVariantsOptions {
         pbold?: React.CSSProperties | {};
         plight?: React.CSSProperties | {};
         heading1?: React.CSSProperties | {}
-        heading2?: React.CSSProperties | {}
+        heading2?: React.CSSProperties | {};
+        p3: React.CSSProperties | {}
     }
 }
 declare module '@mui/material/Typography' {
@@ -36,5 +38,6 @@ declare module '@mui/material/Typography' {
         plight: true;
         heading1: true;
         heading2: true;
+        p3: true
     }
 }
